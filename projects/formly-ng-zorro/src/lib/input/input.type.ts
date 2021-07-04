@@ -66,7 +66,9 @@ import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
         [nzPrecisionMode]="to.number?.precisionMode"
         [nzStep]="to.number?.step"
         [nzInputMode]="to.number?.inputMode"
-        (ngModelChange)="to.number?.modelChange($event)"
+        (ngModelChange)="
+          to.number.modelChange && to.number?.modelChange($event)
+        "
         [ngStyle]="width"
       ></nz-input-number>
 

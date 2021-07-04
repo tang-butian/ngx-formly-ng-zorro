@@ -26,5 +26,6 @@ import { NzCascaderModule } from 'ng-zorro-antd/cascader';
       ],
     }),
   ],
+  exports: [],
 })
 export class FormlyNzCascaderModule {}

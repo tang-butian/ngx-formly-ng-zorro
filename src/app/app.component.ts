@@ -1,6 +1,7 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
+import { CascaderFormly } from 'projects/formly-ng-zorro/src/lib/cascader';
 import {
   AutocompleteFormly,
   InputFormly,
@@ -20,31 +21,12 @@ export class AppComponent {
   @ViewChild('suffixIconSearch') matPrefix: TemplateRef<any>;
   fields: FormlyFieldConfig[] = [
     {
-      key: 'salesMan',
+      key: 'input',
       type: 'input',
       className: 'ant-col  ant-col-24',
       templateOptions: {
-        label: '业务员',
-        placeholder: '',
-        required: true,
-        spanLabelFixed: 100,
-        grid: {
-          label: {
-            span: 6,
-          },
-          control: {
-            span: 18,
-          },
-        },
-      },
-    },
-    {
-      key: 'salesMan1',
-      type: 'input',
-      className: 'ant-col  ant-col-24',
-      templateOptions: {
-        label: '组测试',
-        placeholder: '123123123123123',
+        label: 'input',
+        placeholder: 'input',
         required: true,
 
         spanLabelFixed: 100,
@@ -66,12 +48,12 @@ export class AppComponent {
       },
     },
     {
-      key: 'salesMan2',
+      key: 'password',
       type: 'input',
       className: 'ant-col  ant-col-24',
       templateOptions: {
         type: 'password',
-        label: '组测试',
+        label: 'password',
         placeholder: '131313123123',
         required: true,
         spanLabelFixed: 100,
@@ -94,13 +76,13 @@ export class AppComponent {
     },
 
     {
-      key: 'salesMan3',
+      key: 'number',
       type: 'number',
       className: 'ant-col  ant-col-24',
       // defaultValue: 2,
       templateOptions: {
-        label: '测试number',
-        placeholder: '131313123123',
+        label: 'number',
+        placeholder: 'number',
         required: true,
         spanLabelFixed: 100,
 
@@ -142,8 +124,8 @@ export class AppComponent {
       className: 'ant-col  ant-col-24',
 
       templateOptions: {
-        label: '测试autoComplete',
-        placeholder: '测试autoComplete',
+        label: 'autoComplete',
+        placeholder: 'autoComplete',
         required: true,
         spanLabelFixed: 100,
 
@@ -238,10 +220,18 @@ export class AppComponent {
           },
         ],
         cascader: {
+          expandTrigger: 'hover',
+          expandIcon: 'user',
           modelChange: (value: any[]) => {
             console.log(value);
           },
-        },
+          visibleChange: (visible) => {
+            console.log(visible);
+          },
+          selectionChange: (value) => {
+            console.log(value);
+          },
+        } as CascaderFormly,
       },
     },
   ];
