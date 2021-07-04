@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.less"
             ],
             "scripts": []
@@ -91,6 +92,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.less"
             ],
             "scripts": []
@@ -119,6 +121,46 @@
             "production": {
               "devServerTarget": "ngx-formly-ng-zorro:serve:production"
             }
+          }
+        }
+      }
+    },
+    "FormlyNgZorro": {
+      "projectType": "library",
+      "root": "projects/formly-ng-zorro",
+      "sourceRoot": "projects/formly-ng-zorro/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/formly-ng-zorro/tsconfig.lib.json",
+            "project": "projects/formly-ng-zorro/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/formly-ng-zorro/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/formly-ng-zorro/src/test.ts",
+            "tsConfig": "projects/formly-ng-zorro/tsconfig.spec.json",
+            "karmaConfig": "projects/formly-ng-zorro/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/formly-ng-zorro/tsconfig.lib.json",
+              "projects/formly-ng-zorro/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
