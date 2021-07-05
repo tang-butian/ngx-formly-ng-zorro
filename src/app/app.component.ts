@@ -94,8 +94,7 @@ export class AppComponent {
             span: 18,
           },
         },
-        max: 3,
-        min: 1,
+
         number: {
           step: 2,
           precision: 1,
@@ -232,6 +231,32 @@ export class AppComponent {
             console.log(value);
           },
         } as CascaderFormly,
+      },
+    },
+    {
+      key: 'checkbox',
+      type: 'checkbox',
+      className: 'ant-col  ant-col-24',
+      templateOptions: {
+        label: 'checkbox',
+        type: 'group',
+        required: true,
+        spanLabelFixed: 100,
+        grid: {
+          label: {
+            span: 6,
+          },
+          control: {
+            span: 18,
+          },
+        },
+        options: [
+          { label: 'Apple', value: 'Apple', disabled: true, checked: true },
+          { label: 'Pear', value: 'Pear', disabled: true },
+          { label: 'Orange', value: 'Orange' },
+        ],
+        valueProp: 'value',
+        labelProp: 'label',
       },
     },
   ];
