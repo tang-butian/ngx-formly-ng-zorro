@@ -63,9 +63,9 @@ import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
         [nzMax]="to.max"
         [nzMin]="to.min"
         [nzPrecision]="to.number?.precision"
-        [nzPrecisionMode]="to.number?.precisionMode"
-        [nzStep]="to.number?.step"
-        [nzInputMode]="to.number?.inputMode"
+        [nzPrecisionMode]="to.number?.precisionMode || 'toFixed'"
+        [nzStep]="to.number?.step || 1"
+        [nzInputMode]="to.number?.inputMode || 'decimal'"
         (ngModelChange)="
           to.number.modelChange && to.number?.modelChange($event)
         "
@@ -92,9 +92,9 @@ import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
           [nzAutocomplete]="auto"
         />
         <nz-autocomplete
-          [nzBackfill]="to.autoComplete?.backfill"
+          [nzBackfill]="to.autoComplete?.backfill === true"
           [nzDefaultActiveFirstOption]="
-            to.autoComplete?.defaultActiveFirstOption
+            to.autoComplete?.defaultActiveFirstOption !== false
           "
           [nzWidth]="to.autoComplete?.width"
           [nzOverlayClassName]="to.autoComplete?.overlayClassName"

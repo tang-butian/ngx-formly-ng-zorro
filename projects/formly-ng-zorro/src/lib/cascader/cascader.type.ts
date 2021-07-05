@@ -14,9 +14,27 @@ import { CascaderFormly } from '.';
   template: `
     <nz-cascader
       #cascader
+      [nzPlaceHolder]="to.placeholder || '请选择'"
       [nzOptions]="to.options"
       [formControl]="formControl"
       [formlyAttributes]="field"
+      [nzAllowClear]="to.cascader?.allowClear !== false"
+      [nzAutoFocus]="to.cascader?.autoFocus === true"
+      [nzBackdrop]="to.cascader?.backdrop === true"
+      [nzChangeOnSelect]="to.cascader?.changeOnSelect === true"
+      [nzExpandTrigger]="to.cascader?.expandTrigger || 'click'"
+      [nzLabelProperty]="to.cascader?.labelProperty || 'label'"
+      [nzLabelRender]="to.cascader?.labelRender"
+      [nzMenuClassName]="to.cascader?.menuClassName"
+      [nzMenuStyle]="to.cascader?.menuStyle"
+      [nzNotFoundContent]="to.cascader?.notFoundContent"
+      [nzOptionRender]="to.cascader?.optionRender"
+      [nzShowSearch]="to.cascader?.showSearch"
+      [nzSuffixIcon]="to.cascader?.suffixIcon"
+      [nzValueProperty]="to.cascader?.valueProperty || 'value'"
+      [nzChangeOn]="to.cascader?.changeOn"
+      [nzColumnClassName]="to.cascader?.columnClassName"
+      [nzExpandIcon]="to.cascader?.expandIcon"
       (nzClear)="cascader?.clear()"
       (ngModelChange)="
         to.cascader?.modelChange && to.cascader.modelChange($event)
@@ -43,108 +61,6 @@ export class FormlyFieldCascader
   constructor() {
     super();
   }
-  ngOnInit(): void {
-    const cascader = this.to.cascader as CascaderFormly;
-    this.nzCascader.nzAllowClear = this.check(
-      this.to.cascader.allowClear,
-      this.nzCascader.nzAllowClear
-    );
-
-    this.nzCascader.nzAutoFocus = this.check(
-      cascader.autoFocus,
-      this.nzCascader.nzAutoFocus
-    );
-    this.nzCascader.nzBackdrop = this.check(
-      cascader.backdrop,
-      this.nzCascader.nzBackdrop
-    );
-    this.nzCascader.nzChangeOn = this.check(
-      cascader.changeOn,
-      this.nzCascader.nzChangeOn
-    );
-    this.nzCascader.nzChangeOnSelect = this.check(
-      cascader.changeOnSelect,
-      this.nzCascader.nzChangeOnSelect
-    );
-    this.nzCascader.nzColumnClassName = this.check(
-      cascader.columnClassName,
-      this.nzCascader.nzColumnClassName
-    );
-
-    this.nzCascader.nzExpandTrigger = this.check(
-      cascader.expandTrigger,
-      this.nzCascader.nzExpandTrigger
-    );
-
-    this.nzCascader.nzExpandIcon = this.check(
-      cascader.expandIcon,
-      this.nzCascader.nzExpandIcon
-    );
-    this.nzCascader.nzLabelProperty = this.check(
-      cascader.labelProperty,
-      this.nzCascader.nzLabelProperty
-    );
-    this.nzCascader.nzLabelRender = this.check(
-      cascader.labelRender,
-      this.nzCascader.nzLabelRender
-    );
-    this.nzCascader.nzMenuClassName = this.check(
-      cascader.menuClassName,
-      this.nzCascader.nzMenuClassName
-    );
-    this.nzCascader.nzMenuStyle = this.check(
-      cascader.menuStyle,
-      this.nzCascader.nzMenuStyle
-    );
-    this.nzCascader.nzNotFoundContent = this.check(
-      cascader.notFoundContent,
-      this.nzCascader.nzNotFoundContent
-    );
-    this.nzCascader.nzOptionRender = this.check(
-      cascader.optionRender,
-      this.nzCascader.nzOptionRender
-    );
-    this.nzCascader.nzShowArrow = this.check(
-      cascader.showArrow,
-      this.nzCascader.nzShowArrow
-    );
-    this.nzCascader.nzShowSearch = this.check(
-      cascader.showSearch,
-      this.nzCascader.nzShowSearch
-    );
-    this.nzCascader.nzSuffixIcon = this.check(
-      cascader.suffixIcon,
-      this.nzCascader.nzSuffixIcon
-    );
-    this.nzCascader.nzValueProperty = this.check(
-      cascader.valueProperty,
-      this.nzCascader.nzValueProperty
-    );
-
-    // this.cascader.autoFocus = this.check(this.cascader.autoFocus, false);
-    // this.cascader.backdrop = this.check(this.cascader.backdrop, false);
-    // this.cascader.changeOnSelect = this.check(
-    //   this.cascader.changeOnSelect,
-    //   false
-    // );
-    // this.cascader.expandTrigger = this.check(
-    //   this.cascader.expandTrigger,
-    //   'click'
-    // );
-    // this.cascader.labelProperty = this.check(
-    //   this.cascader.labelProperty,
-    //   'label'
-    // );
-    // this.cascader.showArrow = this.check(this.cascader.showArrow, true);
-    // this.cascader.valueProperty = this.check(
-    //   this.cascader.valueProperty,
-    //   'value'
-    // );
-  }
+  ngOnInit(): void {}
   ngAfterViewInit(): void {}
-
-  check(value: any, defined: any) {
-    if (value === null || value === undefined) return defined;
-    return value;
-  }
 }
