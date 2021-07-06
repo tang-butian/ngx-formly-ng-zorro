@@ -11,11 +11,17 @@ import { FieldType } from '@ngx-formly/core';
   selector: 'formly-field-checkbox',
   template: `
     <label
-      *ngIf="to.type !== 'group'; then group"
+      *ngIf="to.type !== 'group'; else group"
       nz-checkbox
       [formControl]="formControl"
       [formlyAttributes]="field"
-      >{{ 'Checkbox' }}</label
+      [nzIndeterminate]="
+        field.defaultValue === null || field.defaultValue === undefined
+      "
+      (ngModelChange)="
+        to.checkbox?.ngModelChange && to.checkbox?.ngModelChange($event)
+      "
+      >{{ to.placeholder }}</label
     >
 
     <ng-template #group>
@@ -23,6 +29,9 @@ import { FieldType } from '@ngx-formly/core';
         [formControl]="formControl"
         [formlyAttributes]="field"
         [ngModel]="to.options"
+        (ngModelChange)="
+          to.checkbox?.ngModelChange && to.checkbox?.ngModelChange($event)
+        "
       ></nz-checkbox-group>
     </ng-template>
   `,
@@ -37,6 +46,7 @@ export class FormlyFieldCheckbox
    */
   constructor() {
     super();
+    console.log(this);
   }
   ngOnInit(): void {}
   ngAfterViewInit(): void {}

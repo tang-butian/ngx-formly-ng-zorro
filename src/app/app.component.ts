@@ -2,6 +2,7 @@ import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { CascaderFormly } from 'projects/formly-ng-zorro/src/lib/cascader';
+import { CheckboxFormly } from 'projects/formly-ng-zorro/src/lib/checkbox';
 import {
   AutocompleteFormly,
   InputFormly,
@@ -238,7 +239,7 @@ export class AppComponent {
       type: 'checkbox',
       className: 'ant-col  ant-col-24',
       templateOptions: {
-        label: 'checkbox',
+        label: 'checkbox_group',
         type: 'group',
         required: true,
         spanLabelFixed: 100,
@@ -255,8 +256,35 @@ export class AppComponent {
           { label: 'Pear', value: 'Pear', disabled: true },
           { label: 'Orange', value: 'Orange' },
         ],
-        valueProp: 'value',
-        labelProp: 'label',
+        checkbox: {
+          ngModelChange: (array) => {
+            console.log(array);
+          },
+        } as CheckboxFormly,
+      },
+    },
+    {
+      key: 'checkbox2',
+      type: 'checkbox',
+      className: 'ant-col  ant-col-24',
+      defaultValue: true,
+      templateOptions: {
+        required: true,
+        spanLabelFixed: 100,
+        grid: {
+          label: {
+            span: 6,
+          },
+          control: {
+            span: 18,
+          },
+        },
+        placeholder: '复选框',
+        checkbox: {
+          ngModelChange: (value: boolean) => {
+            console.log(value);
+          },
+        } as CheckboxFormly,
       },
     },
   ];
