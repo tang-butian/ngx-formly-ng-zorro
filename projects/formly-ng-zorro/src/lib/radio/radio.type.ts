@@ -2,7 +2,6 @@ import {
   Component,
   ChangeDetectionStrategy,
   AfterViewInit,
-  ViewChild,
   OnInit,
 } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
@@ -23,7 +22,7 @@ import { FieldType } from '@ngx-formly/core';
         <label
           nz-radio
           [nzValue]="o.value"
-          *ngFor="let o of to.options"
+          *ngFor="let o of isArray ? to.options : (to.options | async)"
           [nzDisabled]="o.disabled === true"
           >{{ o.label }}</label
         >
@@ -33,7 +32,7 @@ import { FieldType } from '@ngx-formly/core';
         <label
           nz-radio-button
           [nzValue]="o.value"
-          *ngFor="let o of to.options"
+          *ngFor="let o of isArray ? to.options : (to.options | async)"
           [nzDisabled]="o.disabled === true"
           >{{ o.label }}</label
         >
@@ -46,13 +45,10 @@ export class FormlyFieldRadio
   extends FieldType
   implements OnInit, AfterViewInit
 {
-  /**
-   *
-   */
-  constructor() {
-    super();
-    console.log(this);
+  get isArray(): boolean {
+    return this.to.options instanceof Array;
   }
+
   ngOnInit(): void {}
   ngAfterViewInit(): void {}
 }

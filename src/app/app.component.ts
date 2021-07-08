@@ -10,6 +10,8 @@ import {
   NumberFormly,
 } from 'projects/formly-ng-zorro/src/lib/input';
 import { RadioFormly } from 'projects/formly-ng-zorro/src/lib/radio';
+import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -313,11 +315,16 @@ export class AppComponent {
             console.log(value);
           },
         } as RadioFormly,
-        options: [
+        options: of([
           { label: 'Apple', value: 'Apple', disabled: false },
           { label: 'Pear', value: 'Pear', disabled: false },
           { label: 'Orange', value: 'Orange' },
-        ],
+        ]).pipe(delay(100)),
+        // options: [
+        //   { label: 'Apple', value: 'Apple', disabled: false },
+        //   { label: 'Pear', value: 'Pear', disabled: false },
+        //   { label: 'Orange', value: 'Orange' },
+        // ],
       },
     },
   ];
