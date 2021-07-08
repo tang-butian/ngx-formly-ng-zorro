@@ -9,6 +9,7 @@ import {
   InputGroupFormly,
   NumberFormly,
 } from 'projects/formly-ng-zorro/src/lib/input';
+import { RadioFormly } from 'projects/formly-ng-zorro/src/lib/radio';
 
 @Component({
   selector: 'app-root',
@@ -285,6 +286,38 @@ export class AppComponent {
             console.log(value);
           },
         } as CheckboxFormly,
+      },
+    },
+    {
+      key: 'radio',
+      type: 'radio',
+      className: 'ant-col  ant-col-24',
+      defaultValue: 'Apple',
+      templateOptions: {
+        required: true,
+        label: 'radio',
+        type: 'button',
+        spanLabelFixed: 100,
+        grid: {
+          label: {
+            span: 6,
+          },
+          control: {
+            span: 18,
+          },
+        },
+        radio: {
+          buttonStyle: 'solid',
+          name: 'test',
+          ngModelChange: (value: any) => {
+            console.log(value);
+          },
+        } as RadioFormly,
+        options: [
+          { label: 'Apple', value: 'Apple', disabled: false },
+          { label: 'Pear', value: 'Pear', disabled: false },
+          { label: 'Orange', value: 'Orange' },
+        ],
       },
     },
   ];
