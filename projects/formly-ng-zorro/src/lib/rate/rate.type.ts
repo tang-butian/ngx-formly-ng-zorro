@@ -1,0 +1,41 @@
+import {
+  Component,
+  ChangeDetectionStrategy,
+  AfterViewInit,
+  OnInit,
+} from '@angular/core';
+import { FieldType } from '@ngx-formly/core';
+
+@Component({
+  selector: 'formly-field-radio',
+  template: `
+    <nz-rate
+      [formControl]="formControl"
+      [formlyAttributes]="field"
+      [nzAllowClear]="to.rate?.allowClear"
+      [nzAllowHalf]="to.rate?.allowHalf"
+      [nzCharacter]="to.rate?.character"
+      [nzCount]="to.rate?.count"
+      [nzTooltips]="to.rate?.tooltips"
+      (ngModelChange)="to.rate?.ngModelChange && to.rate?.ngModelChange($event)"
+      (nzOnBlur)="to.rate?.onBlur && to.rate?.onBlur($event)"
+      (nzOnFocus)="to.rate?.onFocus && to.rate?.onFocus($event)"
+      (nzOnHoverChange)="
+        to.rate?.onHoverChange && to.rate?.onHoverChange($event)
+      "
+      (nzOnKeyDown)="to.rate?.onKyeDown && to.rate?.onKyeDown($event)"
+    ></nz-rate>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class FormlyFieldRate
+  extends FieldType
+  implements OnInit, AfterViewInit
+{
+  get isArray(): boolean {
+    return this.to.options instanceof Array;
+  }
+
+  ngOnInit(): void {}
+  ngAfterViewInit(): void {}
+}
