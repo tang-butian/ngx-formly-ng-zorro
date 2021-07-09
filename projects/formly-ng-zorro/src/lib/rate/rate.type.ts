@@ -28,14 +28,4 @@ import { FieldType } from '@ngx-formly/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldRate
-  extends FieldType
-  implements OnInit, AfterViewInit
-{
-  get isArray(): boolean {
-    return this.to.options instanceof Array;
-  }
-
-  ngOnInit(): void {}
-  ngAfterViewInit(): void {}
-}
+export class FormlyFieldRate extends FieldType {}
