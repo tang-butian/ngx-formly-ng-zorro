@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyNzFormFieldModule } from '../form-field/form-field.module';
 import { FormlyFieldSelect } from './select.type';
+import { SelectFormly } from '.';
 
 @NgModule({
   declarations: [FormlyFieldSelect],
@@ -21,7 +22,22 @@ import { FormlyFieldSelect } from './select.type';
           wrappers: ['form-field'],
           defaultOptions: {
             templateOptions: {
-              select: {},
+              select: {
+                compareWith: (o1: any, o2: any) => o1 === o2,
+                autoClearSearchValue: true,
+                allowClear: false,
+                backdrop: false,
+                open: false,
+                dropdownMatchSelectWidth: true,
+                serverSearch: false,
+                maxMultipleCount: Infinity,
+                mode: 'default',
+                showSearch: false,
+                tokenSeparators: [],
+                loading: false,
+                optionHeightPx: 32,
+                optionOverflowSize: 8,
+              } as SelectFormly,
             },
           },
         },

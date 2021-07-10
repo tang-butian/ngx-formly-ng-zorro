@@ -11,6 +11,7 @@ import {
 } from 'projects/formly-ng-zorro/src/lib/input';
 import { RadioFormly } from 'projects/formly-ng-zorro/src/lib/radio';
 import { RateFormly } from 'projects/formly-ng-zorro/src/lib/rate';
+import { SelectFormly } from 'projects/formly-ng-zorro/src/lib/select';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
@@ -354,6 +355,34 @@ export class AppComponent implements OnInit {
             allowHalf: true,
             character: this.characterZhLetter,
           } as RateFormly,
+        },
+      },
+      {
+        key: 'select',
+        type: 'select',
+        className: 'ant-col  ant-col-24',
+        templateOptions: {
+          //  required: true,
+          placeholder: '123123123123',
+          label: 'select',
+          multople: true,
+          spanLabelFixed: 100,
+          options: [
+            { label: 'Apple', value: 'Apple', disabled: true },
+            { label: 'Apple2', value: 'Apple2', disabled: true, hide: true },
+            { label: 'Pear', value: 'Pear', disabled: false },
+            { label: 'Orange', value: 'Orange' },
+          ],
+          select: {
+            mode: 'tags',
+
+            maxTagCount: 1,
+            showArrow: true,
+            showSearch: true,
+            allowClear: true,
+            loading: true,
+            maxMultipleCount: 2,
+          } as SelectFormly,
         },
       },
     ];

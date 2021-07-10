@@ -46,7 +46,6 @@ export class FormlyFieldCheckbox
    */
   constructor() {
     super();
-    console.log(this);
   }
   ngOnInit(): void {}
   ngAfterViewInit(): void {}

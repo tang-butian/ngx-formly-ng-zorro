@@ -80,6 +80,11 @@ export interface SelectFormly {
   maxMultipleCount?: number;
 
   /**
+   * 	设置 nz-select 的模式
+   */
+  mode?: 'multiple' | 'tags' | 'default';
+
+  /**
    * 当下拉列表为空时显示的内容
    */
   notFoundContent?: string | TemplateRef<void>;
@@ -159,12 +164,12 @@ export interface SelectFormly {
   /**
    * 失去焦点时的回调
    */
-  onBlur?: (event: any) => void;
+  blur?: (event: any) => void;
 
   /**
    * 获取焦点时的回调
    */
-  onFocus?: (event: any) => void;
+  focus?: (event: any) => void;
 
   /**
    * 下拉菜单打开状态变化回调
@@ -180,4 +185,34 @@ export interface SelectFormly {
    * 文本框值变化时回调
    */
   onSearch?: (event: string) => void;
+}
+
+export interface OptionFormly {
+  /**
+   * 是否禁用
+   * @default false
+   */
+  disabled?: boolean;
+
+  /**
+   * 选中该 nz-option 后，nz-select 中显示的文字
+   */
+  label: string | number;
+
+  /**
+   * nz-select 中 ngModel 的值
+   */
+  value: any;
+
+  /**
+   * 是否在选项列表中隐藏改选项
+   * @default false
+   */
+  hide?: boolean;
+
+  /**
+   * 是否自定义在下拉菜单中的Template内容，当为 true 时，nz-option 包裹的内容将直接渲染在下拉菜单中
+   * @default false
+   */
+  customContent?: boolean;
 }
