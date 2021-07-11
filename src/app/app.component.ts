@@ -4,6 +4,10 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { CascaderFormly } from 'projects/formly-ng-zorro/src/lib/cascader';
 import { CheckboxFormly } from 'projects/formly-ng-zorro/src/lib/checkbox';
 import {
+  DateFormly,
+  RangeDateFormly,
+} from 'projects/formly-ng-zorro/src/lib/date';
+import {
   AutocompleteFormly,
   InputFormly,
   InputGroupFormly,
@@ -419,6 +423,71 @@ export class AppComponent implements OnInit {
 
           spanLabelFixed: 100,
           switch: {} as SwitchFormly,
+        },
+      },
+      {
+        key: 'date',
+        type: 'date',
+        className: 'ant-col  ant-col-24',
+        templateOptions: {
+          //  required: true,
+          placeholder: '123123123123',
+          label: 'date',
+
+          spanLabelFixed: 100,
+          date: {
+            mode: 'date',
+            onOpenChange: (value: boolean) => {
+              console.log(value);
+            },
+            onOk: (value: Date) => {
+              console.log(value);
+            },
+          } as DateFormly,
+        },
+      },
+      {
+        key: 'range-date',
+        type: 'date',
+        className: 'ant-col  ant-col-24',
+        templateOptions: {
+          //  required: true,
+          type: 'range',
+          placeholder: ['123', 'sdf'] as any,
+          label: 'range-date',
+
+          spanLabelFixed: 100,
+          range: {
+            mode: 'date',
+            onOpenChange: (value: boolean) => {
+              console.log(value);
+            },
+            onOk: (value: Date) => {
+              console.log(value);
+            },
+          } as RangeDateFormly,
+        },
+      },
+      {
+        key: 'range-date2',
+        type: 'rangeDate',
+        className: 'ant-col  ant-col-24',
+        templateOptions: {
+          //  required: true,
+
+          placeholder: ['123', 'sdf'] as any,
+          label: 'range-date2',
+
+          spanLabelFixed: 100,
+          range: {
+            mode: 'date',
+            onOpenChange: (value: boolean) => {
+              console.log(value);
+            },
+            onOk: (value: Date) => {
+              console.log(value);
+            },
+          } as RangeDateFormly,
         },
       },
     ];
