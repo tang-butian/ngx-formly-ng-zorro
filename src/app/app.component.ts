@@ -392,6 +392,19 @@ export class AppComponent implements OnInit {
           } as SelectFormly,
         },
       },
+
+      {
+        key: 'slider',
+        type: 'slider',
+        className: 'ant-col  ant-col-24',
+        templateOptions: {
+          //  required: true,
+          placeholder: '123123123123',
+          label: 'slider',
+
+          spanLabelFixed: 100,
+        },
+      },
     ];
   }
 

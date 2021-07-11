@@ -73,10 +73,4 @@ export class FormlyFieldSelect extends FieldType implements AfterViewInit {
       });
     }
   }
-
-  async getOptions() {
-    this.select.nzOptions = await (
-      this.to.options as Observable<any[]>
-    ).toPromise();
-  }
 }
