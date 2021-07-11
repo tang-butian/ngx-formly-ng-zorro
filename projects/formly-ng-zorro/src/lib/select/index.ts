@@ -186,38 +186,3 @@ export interface SelectFormly {
    */
   onSearch?: (event: string) => void;
 }
-
-export interface OptionFormly {
-  /**
-   * 是否禁用
-   * @default false
-   */
-  disabled?: boolean;
-
-  /**
-   * 选中该 nz-option 后，nz-select 中显示的文字
-   */
-  label: string | number;
-
-  /**
-   * 组Label
-   */
-  groupLabel: string | number | TemplateRef<void>;
-
-  /**
-   * nz-select 中 ngModel 的值
-   */
-  value: any;
-
-  /**
-   * 是否在选项列表中隐藏改选项
-   * @default false
-   */
-  hide?: boolean;
-
-  /**
-   * 是否自定义在下拉菜单中的Template内容，当为 true 时，nz-option 包裹的内容将直接渲染在下拉菜单中
-   * @default false
-   */
-  customContent?: boolean;
-}

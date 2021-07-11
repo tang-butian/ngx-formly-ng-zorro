@@ -5,11 +5,12 @@ import {
   OnInit,
   AfterViewInit,
   TemplateRef,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
-import { isFunction } from '@ngx-formly/core/lib/utils';
+
 import { NzSelectComponent } from 'ng-zorro-antd/select';
-import { OptionFormly } from '.';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'formly-field-radio',
@@ -36,7 +37,7 @@ import { OptionFormly } from '.';
       [nzMaxTagPlaceholder]="to.select?.maxTagPlaceholder"
       [nzOptionHeightPx]="to.select?.optionHeightPx"
       [nzOptionOverflowSize]="to.select?.optionOverflowSize"
-      [nzOptions]="to.options"
+      [nzOptions]="ops"
       (ngModelChange)="
         to.select?.ngModelChange && to.select?.ngModelChange($event)
       "
@@ -57,10 +58,33 @@ export class FormlyFieldSelect extends FieldType implements AfterViewInit {
   get isArray(): boolean {
     return this.to.options instanceof Array;
   }
-  group: Array<string | number | TemplateRef<void>> = [];
+
+  ops: any[] = [];
+
+  /**
+   *
+   */
+  constructor(public changeDetectorRef: ChangeDetectorRef) {
+    super();
+  }
+
   ngAfterViewInit(): void {
     if (this.to.select?.filterOption instanceof Function) {
       this.select.nzFilterOption = this.to.select?.filterOption;
     }
+    if (this.isArray) {
+      this.ops = this.to.options as any;
+    } else {
+      (this.to.options as Observable<any[]>).subscribe((options) => {
+        this.ops = options;
+        this.changeDetectorRef.detectChanges();
+      });
+    }
+  }
+
+  async getOptions() {
+    this.select.nzOptions = await (
+      this.to.options as Observable<any[]>
+    ).toPromise();
   }
 }
