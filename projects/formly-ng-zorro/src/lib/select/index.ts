@@ -200,6 +200,11 @@ export interface OptionFormly {
   label: string | number;
 
   /**
+   * 组Label
+   */
+  groupLabel: string | number | TemplateRef<void>;
+
+  /**
    * nz-select 中 ngModel 的值
    */
   value: any;

@@ -4,10 +4,12 @@ import {
   ViewChild,
   OnInit,
   AfterViewInit,
+  TemplateRef,
 } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { isFunction } from '@ngx-formly/core/lib/utils';
 import { NzSelectComponent } from 'ng-zorro-antd/select';
+import { OptionFormly } from '.';
 
 @Component({
   selector: 'formly-field-radio',
@@ -34,6 +36,7 @@ import { NzSelectComponent } from 'ng-zorro-antd/select';
       [nzMaxTagPlaceholder]="to.select?.maxTagPlaceholder"
       [nzOptionHeightPx]="to.select?.optionHeightPx"
       [nzOptionOverflowSize]="to.select?.optionOverflowSize"
+      [nzOptions]="to.options"
       (ngModelChange)="
         to.select?.ngModelChange && to.select?.ngModelChange($event)
       "
@@ -45,13 +48,6 @@ import { NzSelectComponent } from 'ng-zorro-antd/select';
       "
       (nzOnSearch)="to.select?.onSearch && to.select?.onSearch($event)"
     >
-      <nz-option
-        *ngFor="let option of isArray ? to.options : (to.options | async)"
-        [nzValue]="option.value"
-        [nzLabel]="option.label"
-        [nzHide]="option.hide"
-        [nzDisabled]="option.disabled"
-      ></nz-option>
     </nz-select>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -61,6 +57,7 @@ export class FormlyFieldSelect extends FieldType implements AfterViewInit {
   get isArray(): boolean {
     return this.to.options instanceof Array;
   }
+  group: Array<string | number | TemplateRef<void>> = [];
   ngAfterViewInit(): void {
     if (this.to.select?.filterOption instanceof Function) {
       this.select.nzFilterOption = this.to.select?.filterOption;

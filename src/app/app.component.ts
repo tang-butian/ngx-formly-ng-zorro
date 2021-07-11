@@ -11,7 +11,10 @@ import {
 } from 'projects/formly-ng-zorro/src/lib/input';
 import { RadioFormly } from 'projects/formly-ng-zorro/src/lib/radio';
 import { RateFormly } from 'projects/formly-ng-zorro/src/lib/rate';
-import { SelectFormly } from 'projects/formly-ng-zorro/src/lib/select';
+import {
+  OptionFormly,
+  SelectFormly,
+} from 'projects/formly-ng-zorro/src/lib/select';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
@@ -371,12 +374,14 @@ export class AppComponent implements OnInit {
             { label: 'Apple', value: 'Apple', disabled: true },
             { label: 'Apple2', value: 'Apple2', disabled: true, hide: true },
             { label: 'Pear', value: 'Pear', disabled: false },
-            { label: 'Orange', value: 'Orange' },
-          ],
+            {
+              label: 'Orange',
+              value: 'Orange',
+            },
+          ] as OptionFormly[],
           select: {
             mode: 'tags',
 
-            maxTagCount: 1,
             showArrow: true,
             showSearch: true,
             allowClear: true,
