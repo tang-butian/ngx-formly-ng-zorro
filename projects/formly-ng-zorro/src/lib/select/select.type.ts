@@ -61,13 +61,6 @@ export class FormlyFieldSelect extends FieldType implements AfterViewInit {
 
   ops: any[] = [];
 
-  /**
-   *
-   */
-  constructor(public changeDetectorRef: ChangeDetectorRef) {
-    super();
-  }
-
   ngAfterViewInit(): void {
     if (this.to.select?.filterOption instanceof Function) {
       this.select.nzFilterOption = this.to.select?.filterOption;
@@ -77,7 +70,6 @@ export class FormlyFieldSelect extends FieldType implements AfterViewInit {
     } else {
       (this.to.options as Observable<any[]>).subscribe((options) => {
         this.ops = options;
-        this.changeDetectorRef.detectChanges();
       });
     }
   }
