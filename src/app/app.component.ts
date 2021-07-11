@@ -12,6 +12,8 @@ import {
 import { RadioFormly } from 'projects/formly-ng-zorro/src/lib/radio';
 import { RateFormly } from 'projects/formly-ng-zorro/src/lib/rate';
 import { SelectFormly } from 'projects/formly-ng-zorro/src/lib/select';
+import { SliderFormly } from 'projects/formly-ng-zorro/src/lib/slider';
+import { SwitchFormly } from 'projects/formly-ng-zorro/src/lib/switch';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
@@ -403,6 +405,20 @@ export class AppComponent implements OnInit {
           label: 'slider',
 
           spanLabelFixed: 100,
+          slider: {} as SliderFormly,
+        },
+      },
+      {
+        key: 'switch',
+        type: 'switch',
+        className: 'ant-col  ant-col-24',
+        templateOptions: {
+          //  required: true,
+          placeholder: '123123123123',
+          label: 'switch',
+
+          spanLabelFixed: 100,
+          switch: {} as SwitchFormly,
         },
       },
     ];

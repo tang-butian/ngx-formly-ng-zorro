@@ -7,6 +7,7 @@ import { FormlyNzRadioModule } from './radio/radio.module';
 import { FormlyNzRateModule } from './rate/rate.module';
 import { FormlyNzSelectModule } from './select/select.module';
 import { FormlyNzSliderModule } from './slider/slider.module';
+import { FormlyNzSwitchModule } from './switch/switch.module';
 
 @NgModule({
   declarations: [],
@@ -19,6 +20,7 @@ import { FormlyNzSliderModule } from './slider/slider.module';
     FormlyNzRateModule,
     FormlyNzSelectModule,
     FormlyNzSliderModule,
+    FormlyNzSwitchModule,
   ],
   exports: [],
 })
