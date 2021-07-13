@@ -8,7 +8,7 @@ import { FieldType } from '@ngx-formly/core';
 import { SwitchFormly } from '.';
 
 @Component({
-  selector: 'formly-field-radio',
+  selector: 'formly-field-switch',
   template: `
     <nz-switch
       [formControl]="formControl"

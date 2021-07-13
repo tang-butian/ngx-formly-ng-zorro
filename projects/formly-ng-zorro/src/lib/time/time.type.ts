@@ -1,7 +1,6 @@
 import {
   Component,
   ChangeDetectionStrategy,
-  AfterViewInit,
   ViewChild,
   OnInit,
 } from '@angular/core';
@@ -9,7 +8,7 @@ import { FieldType } from '@ngx-formly/core';
 import { NzTimePickerComponent } from 'ng-zorro-antd/time-picker';
 
 @Component({
-  selector: 'formly-field-radio',
+  selector: 'formly-field-time',
   template: `
     <nz-time-picker
       #time

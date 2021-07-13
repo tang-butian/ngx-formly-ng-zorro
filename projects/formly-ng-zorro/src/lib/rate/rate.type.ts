@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
-  selector: 'formly-field-radio',
+  selector: 'formly-field-rate',
   template: `
     <nz-rate
       [formControl]="formControl"

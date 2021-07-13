@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
+import { TransferItem } from 'ng-zorro-antd/transfer';
 import { CascaderFormly } from 'projects/formly-ng-zorro/src/lib/cascader';
 import { CheckboxFormly } from 'projects/formly-ng-zorro/src/lib/checkbox';
 import {
@@ -19,6 +20,7 @@ import { SelectFormly } from 'projects/formly-ng-zorro/src/lib/select';
 import { SliderFormly } from 'projects/formly-ng-zorro/src/lib/slider';
 import { SwitchFormly } from 'projects/formly-ng-zorro/src/lib/switch';
 import { TimeFormly } from 'projects/formly-ng-zorro/src/lib/time';
+import { TransferFormly } from 'projects/formly-ng-zorro/src/lib/transfer';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
@@ -34,8 +36,16 @@ export class AppComponent implements OnInit {
   @ViewChild('characterZhLetter', { static: true })
   characterZhLetter: TemplateRef<any>;
   fields: FormlyFieldConfig[];
-
+  list: TransferItem[] = [];
   ngOnInit(): void {
+    for (let i = 0; i < 20; i++) {
+      this.list.push({
+        key: i.toString(),
+        title: `content${i + 1}`,
+        disabled: i % 3 < 1,
+      });
+    }
+
     this.fields = [
       {
         key: 'input',
@@ -505,6 +515,19 @@ export class AppComponent implements OnInit {
           time: {
             suffixIcon: this.characterZhLetter,
           } as TimeFormly,
+        },
+      },
+      {
+        key: 'transfer',
+        type: 'transfer',
+        className: 'ant-col  ant-col-24',
+        templateOptions: {
+          label: 'transfer',
+
+          spanLabelFixed: 100,
+          transfer: {
+            dataSource: this.list,
+          } as TransferFormly,
         },
       },
     ];

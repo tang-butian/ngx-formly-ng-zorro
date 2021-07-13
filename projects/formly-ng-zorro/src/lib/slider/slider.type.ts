@@ -14,7 +14,7 @@ import { NzSliderComponent } from 'ng-zorro-antd/slider';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'formly-field-radio',
+  selector: 'formly-field-slider',
   template: `
     <nz-slider
       #slider

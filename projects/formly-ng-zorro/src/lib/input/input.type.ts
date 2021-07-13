@@ -9,7 +9,7 @@ import { NzAutocompleteComponent } from 'ng-zorro-antd/auto-complete';
 import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
 
 @Component({
-  selector: 'formly-field-nz-input',
+  selector: 'formly-field-input',
   template: `
     <ng-container [ngSwitch]="to.type">
       <nz-input-group

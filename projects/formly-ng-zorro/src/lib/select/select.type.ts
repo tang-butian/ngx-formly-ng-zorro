@@ -13,7 +13,7 @@ import { NzSelectComponent } from 'ng-zorro-antd/select';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'formly-field-radio',
+  selector: 'formly-field-select',
   template: `
     <nz-select
       #select

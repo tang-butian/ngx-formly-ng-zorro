@@ -6,7 +6,7 @@ import {
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
-  selector: 'formly-field-radio',
+  selector: 'formly-field-date',
   template: `
     <ng-container [ngSwitch]="to.type">
       <nz-date-picker

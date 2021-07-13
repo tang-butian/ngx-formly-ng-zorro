@@ -4,30 +4,33 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyNzFormFieldModule } from '../form-field/form-field.module';
-import { FormlyFieldTime } from './time.type';
-import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
-import { TimeFormly } from '.';
+import { NzTransferModule } from 'ng-zorro-antd/transfer';
+
+import { FormlyFieldTransfer } from './transfer.type';
+import { TransferFormly } from '.';
+
 @NgModule({
-  declarations: [FormlyFieldTime],
+  declarations: [FormlyFieldTransfer],
   imports: [
     CommonModule,
-    NzTimePickerModule,
+    NzTransferModule,
     ReactiveFormsModule,
     FormlyNzFormFieldModule,
     FormlyModule.forChild({
       types: [
         {
-          name: 'time',
-          component: FormlyFieldTime,
+          name: 'transfer',
+          component: FormlyFieldTransfer,
           wrappers: ['form-field'],
           defaultOptions: {
             templateOptions: {
-              time: {
-                allowEmpty: true,
-
-                defaultOpenValue: new Date(),
-                format: 'HH:mm:ss' as any,
-              } as TimeFormly,
+              transfer: {
+                dataSource: [],
+                titles: ['', ''],
+                operations: ['', ''],
+                renderList: [null, null],
+                listStyle: {},
+              } as TransferFormly,
             },
           },
         },
@@ -35,4 +38,4 @@ import { TimeFormly } from '.';
     }),
   ],
 })
-export class FormlyNzTimeModule {}
+export class FormlyNzTransferModule {}
