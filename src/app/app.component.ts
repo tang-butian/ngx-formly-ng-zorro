@@ -18,6 +18,7 @@ import { RateFormly } from 'projects/formly-ng-zorro/src/lib/rate';
 import { SelectFormly } from 'projects/formly-ng-zorro/src/lib/select';
 import { SliderFormly } from 'projects/formly-ng-zorro/src/lib/slider';
 import { SwitchFormly } from 'projects/formly-ng-zorro/src/lib/switch';
+import { TimeFormly } from 'projects/formly-ng-zorro/src/lib/time';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
@@ -488,6 +489,22 @@ export class AppComponent implements OnInit {
               console.log(value);
             },
           } as RangeDateFormly,
+        },
+      },
+      {
+        key: 'time',
+        type: 'time',
+        className: 'ant-col  ant-col-24',
+        templateOptions: {
+          //  required: true,
+
+          placeholder: ['123', 'sdf'] as any,
+          label: 'time',
+
+          spanLabelFixed: 100,
+          time: {
+            suffixIcon: this.characterZhLetter,
+          } as TimeFormly,
         },
       },
     ];
