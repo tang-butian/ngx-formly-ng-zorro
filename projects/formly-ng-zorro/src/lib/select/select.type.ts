@@ -53,15 +53,15 @@ import { Observable } from 'rxjs';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldSelect extends FieldType implements AfterViewInit {
-  @ViewChild('select', { static: false }) select: NzSelectComponent;
+export class FormlyFieldSelect extends FieldType implements OnInit {
+  @ViewChild('select', { static: true }) select: NzSelectComponent;
   get isArray(): boolean {
     return this.to.options instanceof Array;
   }
 
   ops: any[] = [];
 
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
     if (this.to.select?.filterOption instanceof Function) {
       this.select.nzFilterOption = this.to.select?.filterOption;
     }
