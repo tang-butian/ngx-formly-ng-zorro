@@ -8,9 +8,11 @@ import { NzTransferModule } from 'ng-zorro-antd/transfer';
 
 import { FormlyFieldTransfer } from './transfer.type';
 import { TransferFormly } from '.';
+import { TransferComponent } from './transfer.component';
 
 @NgModule({
-  declarations: [FormlyFieldTransfer],
+  declarations: [FormlyFieldTransfer, TransferComponent],
+  exports: [TransferComponent],
   imports: [
     CommonModule,
     NzTransferModule,

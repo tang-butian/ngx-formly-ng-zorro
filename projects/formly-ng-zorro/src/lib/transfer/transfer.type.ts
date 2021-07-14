@@ -12,7 +12,7 @@ import { NzTransferComponent } from 'ng-zorro-antd/transfer';
 @Component({
   selector: 'formly-field-transfer',
   template: `
-    <nz-transfer
+    <formly-transfer
       #transfer
       [formControl]="formControl"
       [formlyAttributes]="field"
@@ -38,7 +38,7 @@ import { NzTransferComponent } from 'ng-zorro-antd/transfer';
         to.transfer?.onSelectChange && to.transfer?.onSelectChange($event)
       "
       (nzChange)="to.transfer?.onChange && to.transfer?.onChange($event)"
-    ></nz-transfer>
+    ></formly-transfer>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
