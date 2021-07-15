@@ -11,6 +11,7 @@ import { FormlyNzSliderModule } from './slider/slider.module';
 import { FormlyNzSwitchModule } from './switch/switch.module';
 import { FormlyNzTimeModule } from './time/time.module';
 import { FormlyNzTransferModule } from './transfer/transfer.module';
+import { FormlyNzTreeSelectModule } from './tree-select/tree-select.module';
 
 @NgModule({
   declarations: [],
@@ -27,6 +28,7 @@ import { FormlyNzTransferModule } from './transfer/transfer.module';
     FormlyNzDateModule,
     FormlyNzTimeModule,
     FormlyNzTransferModule,
+    FormlyNzTreeSelectModule,
   ],
   exports: [],
 })

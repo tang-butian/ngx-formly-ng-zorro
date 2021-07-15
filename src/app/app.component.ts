@@ -21,6 +21,7 @@ import { SliderFormly } from 'projects/formly-ng-zorro/src/lib/slider';
 import { SwitchFormly } from 'projects/formly-ng-zorro/src/lib/switch';
 import { TimeFormly } from 'projects/formly-ng-zorro/src/lib/time';
 import { TransferFormly } from 'projects/formly-ng-zorro/src/lib/transfer';
+import { TreeSelectFormly } from 'projects/formly-ng-zorro/src/lib/tree-select';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
@@ -535,6 +536,21 @@ export class AppComponent implements OnInit {
           } as TransferFormly,
         },
       },
+
+      {
+        key: 'tree-select',
+        type: 'tree-select',
+        className: 'ant-col  ant-col-24',
+
+        templateOptions: {
+          label: 'tree-select',
+          spanLabelFixed: 100,
+          required: true,
+          treeSelect: {
+            nodes: this.nodes,
+          } as TreeSelectFormly,
+        },
+      },
     ];
   }
 
@@ -543,4 +559,26 @@ export class AppComponent implements OnInit {
 
     alert(JSON.stringify(this.model));
   }
+
+  nodes = [
+    {
+      title: 'parent 1',
+      key: '100',
+      children: [
+        {
+          title: 'parent 1-0',
+          key: '1001',
+          children: [
+            { title: 'leaf 1-0-0', key: '10010', isLeaf: true },
+            { title: 'leaf 1-0-1', key: '10011', isLeaf: true },
+          ],
+        },
+        {
+          title: 'parent 1-1',
+          key: '1002',
+          children: [{ title: 'leaf 1-1-0', key: '10020', isLeaf: true }],
+        },
+      ],
+    },
+  ];
 }
