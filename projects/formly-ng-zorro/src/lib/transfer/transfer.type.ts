@@ -31,6 +31,7 @@ import { NzTransferComponent } from 'ng-zorro-antd/transfer';
       [nzSearchPlaceholder]="to.transfer?.searchPlaceholder"
       [nzNotFoundContent]="to.transfer?.notFoundContent"
       [nzTargetKeys]="to.transfer?.targetKeys"
+      [resutlMap]="to.transfer?.resutlMap"
       (nzSearchChange)="
         to.transfer?.onSearchChange && to.transfer?.onSearchChange($event)
       "

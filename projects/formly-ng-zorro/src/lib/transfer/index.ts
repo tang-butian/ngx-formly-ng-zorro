@@ -113,4 +113,11 @@ export interface TransferFormly {
    * 选中项发生改变时的回调函数
    */
   onSelectChange?: (value: TransferSelectChange) => void;
+
+  /**
+   * 返回结果格式映射
+   * @returns
+   * 默认返回 TransferItem[] 格式
+   */
+  resutlMap?: (items: TransferItem[]) => any[];
 }

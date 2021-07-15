@@ -2,15 +2,19 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  Input,
   OnInit,
   TemplateRef,
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
 import {
+  AbstractControl,
   ControlValueAccessor,
   FormGroup,
   NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validator,
 } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { OnChangeType, OnTouchedType } from 'ng-zorro-antd/core/types';
@@ -19,6 +23,7 @@ import {
   TransferChange,
   TransferItem,
   TransferSearchChange,
+  TransferSelectChange,
 } from 'ng-zorro-antd/transfer';
 import { CascaderFormly } from 'projects/formly-ng-zorro/src/lib/cascader';
 import { CheckboxFormly } from 'projects/formly-ng-zorro/src/lib/checkbox';
@@ -40,13 +45,14 @@ import { SwitchFormly } from 'projects/formly-ng-zorro/src/lib/switch';
 import { TimeFormly } from 'projects/formly-ng-zorro/src/lib/time';
 import { TransferFormly } from 'projects/formly-ng-zorro/src/lib/transfer';
 import { of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { delay, timeInterval } from 'rxjs/operators';
 
 @Component({
   selector: 'formly-transfer',
   template: `
     <nz-transfer
       #transfer
+      [nzDisabled]="nzDisabled"
       [nzDataSource]="nzDataSource"
       [nzTitles]="nzTitles"
       [nzSelectedKeys]="nzSelectedKeys"
@@ -64,6 +70,8 @@ import { delay } from 'rxjs/operators';
       [nzTargetKeys]="nzTargetKeys"
       (nzChange)="change($event)"
       (nzSelectChange)="selectChange($event)"
+      (nzSearchChange)="searchChange($event)"
+      style="flex: auto;"
     ></nz-transfer>
   `,
   encapsulation: ViewEncapsulation.None,
@@ -81,31 +89,45 @@ export class TransferComponent
   implements OnInit, ControlValueAccessor
 {
   @ViewChild('transfer', { static: true }) transfer: NzTransferComponent;
+
+  @Input() resutlMap: (items: TransferItem[]) => any[];
+
   onChange: OnChangeType = () => {};
   onTouched: OnTouchedType = () => {};
-
+  // private cdr: ChangeDetectorRef
   writeValue(obj: any): void {
-    console.log(obj);
-    this.nzDataSource;
+    setTimeout(() => {
+      this.nzTargetKeys = obj;
+      (this['cdr'] as ChangeDetectorRef).markForCheck();
+      this.onChange(this.transfer.rightDataSource);
+    }, 0);
   }
   registerOnChange(fn: any): void {
-    console.log(fn);
     this.onChange = fn;
   }
   registerOnTouched(fn: any): void {
-    console.log(fn);
     this.onTouched = fn;
   }
   setDisabledState?(isDisabled: boolean): void {
-    console.log(isDisabled);
-  }
-  change(value: TransferChange) {
-    console.log(value);
-    this.onChange(this.transfer.rightDataSource);
+    this.nzDisabled = isDisabled;
   }
 
-  selectChange(value: TransferSearchChange) {
+  change(value: TransferChange) {
     console.log(value);
+    if (this.resutlMap instanceof Function) {
+      this.onChange(this.resutlMap(this.transfer.rightDataSource));
+    } else {
+      this.onChange(this.transfer.rightDataSource);
+    }
   }
+
+  selectChange(value: TransferSelectChange) {
+    this.nzSelectChange.emit(value);
+  }
+
+  searchChange(value: TransferSearchChange) {
+    this.nzSearchChange.emit(value);
+  }
+
   ngOnInit(): void {}
 }

@@ -521,12 +521,17 @@ export class AppComponent implements OnInit {
         key: 'transfer',
         type: 'transfer',
         className: 'ant-col  ant-col-24',
+        defaultValue: ['1', '2', '3'],
         templateOptions: {
           label: 'transfer',
-
           spanLabelFixed: 100,
+          required: true,
           transfer: {
             dataSource: this.list,
+            targetKeys: ['4', '5'],
+            resutlMap: (items: TransferItem[]) => {
+              return items.map((x) => x.key);
+            },
           } as TransferFormly,
         },
       },
@@ -534,6 +539,8 @@ export class AppComponent implements OnInit {
   }
 
   submit() {
+    console.log(this.form.valid);
+
     alert(JSON.stringify(this.model));
   }
 }
