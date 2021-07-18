@@ -122,11 +122,8 @@ export class FormlyFieldInput extends FieldType implements AfterViewInit {
    */
   constructor() {
     super();
-    console.log(this);
   }
   ngAfterViewInit(): void {
-    console.log(this.to);
-
     if (this.to.type === 'number') {
       this.number.nzParser = this.to.number?.parser ?? this.number.nzParser;
       this.number.nzFormatter =

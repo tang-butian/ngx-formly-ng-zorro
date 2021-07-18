@@ -119,5 +119,5 @@ export interface TransferFormly {
    * @returns
    * 默认返回 TransferItem[] 格式
    */
-  resutlMap?: (items: TransferItem[]) => any[];
+  resultMap?: (items: TransferItem[]) => any[];
 }

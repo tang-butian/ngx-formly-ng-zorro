@@ -11,7 +11,12 @@
     "lib": [
       "dom",
       "es2018"
-    ]
+    ],
+    "paths": {
+      "@formly/ng-zoor-ui":[
+        "src/public-api.ts"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,

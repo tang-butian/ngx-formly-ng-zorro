@@ -6,11 +6,8 @@ import {
   OnInit,
 } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
-import { NzTimePickerComponent } from 'ng-zorro-antd/time-picker';
-import { NzTransferComponent } from 'ng-zorro-antd/transfer';
-
 @Component({
-  selector: 'formly-field-transfer',
+  selector: 'formly-field-upload',
   template: `
     <nz-tree-select
       [formControl]="formControl"

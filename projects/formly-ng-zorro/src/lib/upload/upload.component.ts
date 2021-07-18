@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   Input,
+  OnChanges,
   OnInit,
   TemplateRef,
   ViewChild,
@@ -25,6 +26,11 @@ import {
   TransferSearchChange,
   TransferSelectChange,
 } from 'ng-zorro-antd/transfer';
+import {
+  NzUploadChangeParam,
+  NzUploadComponent,
+  NzUploadFile,
+} from 'ng-zorro-antd/upload';
 import { CascaderFormly } from 'projects/formly-ng-zorro/src/lib/cascader';
 import { CheckboxFormly } from 'projects/formly-ng-zorro/src/lib/checkbox';
 import {
@@ -48,60 +54,72 @@ import { of } from 'rxjs';
 import { delay, timeInterval } from 'rxjs/operators';
 
 @Component({
-  selector: 'formly-transfer',
+  selector: 'formly-upload',
   template: `
-    <nz-transfer
-      #transfer
-      [nzDisabled]="nzDisabled"
-      [nzDataSource]="nzDataSource"
-      [nzTitles]="nzTitles"
-      [nzSelectedKeys]="nzSelectedKeys"
-      [nzOperations]="nzOperations"
-      [nzListStyle]="nzListStyle"
-      [nzItemsUnit]="nzItemsUnit"
-      [nzItemUnit]="nzItemUnit"
-      [nzRenderList]="nzRenderList"
-      [nzRender]="nzRender"
-      [nzFooter]="nzFooter"
-      [nzShowSearch]="nzShowSearch"
-      [nzFilterOption]="nzFilterOption"
-      [nzSearchPlaceholder]="nzSearchPlaceholder"
-      [nzNotFoundContent]="nzNotFoundContent"
-      [nzTargetKeys]="nzTargetKeys"
+    <nz-upload
+      [nzAction]="nzAction"
+      [nzAccept]="nzAccept"
+      [nzDirectory]="nzDirectory"
+      [nzBeforeUpload]="nzBeforeUpload"
+      [nzCustomRequest]="nzCustomRequest"
+      [nzData]="nzData"
+      [(nzFileList)]="nzFileList"
+      [nzLimit]="nzLimit"
+      [nzSize]="nzSize"
+      [nzFileType]="nzFileType"
+      [nzFilter]="nzFilter"
+      [nzHeaders]="nzHeaders"
+      [nzListType]="nzListType"
+      [nzMultiple]="nzMultiple"
+      [nzName]="nzName"
+      [nzShowUploadList]="nzShowUploadList"
+      [nzShowButton]="nzShowButton"
+      [nzWithCredentials]="nzWithCredentials"
+      [nzOpenFileDialogOnClick]="nzOpenFileDialogOnClick"
+      [nzPreview]="nzPreview"
+      [nzPreviewFile]="nzPreviewFile"
+      [nzPreviewIsImage]="nzPreviewIsImage"
+      [nzRemove]="nzRemove"
       (nzChange)="change($event)"
-      (nzSelectChange)="selectChange($event)"
-      (nzSearchChange)="searchChange($event)"
-      style="flex: auto;"
-    ></nz-transfer>
+      [nzDownload]="nzDownload"
+      [nzTransformFile]="nzTransformFile"
+      [nzIconRender]="nzIconRender"
+      [nzFileListRender]="nzFileListRender"
+      [nzType]="nzType"
+      (nzFileListChange)="fileListChange($event)"
+    >
+      <button nz-button type="button">
+        <i nz-icon nzType="upload"></i>
+        {{ text }}
+      </button>
+    </nz-upload>
   `,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: TransferComponent,
+      useExisting: UploadComponent,
       multi: true,
     },
   ],
 })
-export class TransferComponent
-  extends NzTransferComponent
+export class UploadComponent
+  extends NzUploadComponent
   implements OnInit, ControlValueAccessor
 {
-  @ViewChild('transfer', { static: true }) transfer: NzTransferComponent;
+  @ViewChild('upload', { static: true }) transfer: NzUploadComponent;
 
-  @Input() resultMap: (items: TransferItem[]) => any[];
+  /**
+   * 按钮文本
+   * @default 点击上传
+   */
+  @Input() text: string = '点击上传';
+  @Input() resultMap: (items: NzUploadFile[]) => any[];
 
   onChange: OnChangeType = () => {};
   onTouched: OnTouchedType = () => {};
-  // private cdr: ChangeDetectorRef
-  writeValue(obj: any): void {
-    setTimeout(() => {
-      this.nzTargetKeys = obj;
-      (this['cdr'] as ChangeDetectorRef).markForCheck();
-      this.onChange(this.transfer.rightDataSource);
-    }, 0);
-  }
+  writeValue(obj: any): void {}
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
@@ -112,21 +130,24 @@ export class TransferComponent
     this.nzDisabled = isDisabled;
   }
 
-  change(value: TransferChange) {
-    if (this.resultMap instanceof Function) {
-      this.onChange(this.resultMap(this.transfer.rightDataSource));
-    } else {
-      this.onChange(this.transfer.rightDataSource);
+  fileListChange(list: NzUploadFile[]) {
+    this.nzFileListChange.emit(list);
+  }
+
+  change(value: NzUploadChangeParam) {
+    this.nzChange.emit(value);
+    if (['removed', 'success'].includes(value.type)) {
+      if (this.resultMap instanceof Function) {
+        this.onChange(
+          this.resultMap(value.fileList.filter((x) => x.status === 'done'))
+        );
+      } else {
+        this.onChange(value.fileList.filter((x) => x.status === 'done'));
+      }
     }
   }
 
-  selectChange(value: TransferSelectChange) {
-    this.nzSelectChange.emit(value);
-  }
-
-  searchChange(value: TransferSearchChange) {
-    this.nzSearchChange.emit(value);
-  }
+  ngOnChanges() {}
 
   ngOnInit(): void {}
 }

@@ -55,12 +55,7 @@ export class FormlyFieldCascader
 {
   cascader: CascaderFormly = {};
   @ViewChild('cascader', { static: true }) nzCascader: NzCascaderComponent;
-  /**
-   *
-   */
-  constructor() {
-    super();
-  }
+
   ngOnInit(): void {}
   ngAfterViewInit(): void {}
 }

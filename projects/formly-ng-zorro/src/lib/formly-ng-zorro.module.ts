@@ -12,6 +12,7 @@ import { FormlyNzSwitchModule } from './switch/switch.module';
 import { FormlyNzTimeModule } from './time/time.module';
 import { FormlyNzTransferModule } from './transfer/transfer.module';
 import { FormlyNzTreeSelectModule } from './tree-select/tree-select.module';
+import { FormlyNzUploadModule } from './upload/upload.module';
 
 @NgModule({
   declarations: [],
@@ -29,6 +30,7 @@ import { FormlyNzTreeSelectModule } from './tree-select/tree-select.module';
     FormlyNzTimeModule,
     FormlyNzTransferModule,
     FormlyNzTreeSelectModule,
+    FormlyNzUploadModule,
   ],
   exports: [],
 })
