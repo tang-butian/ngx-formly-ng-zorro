@@ -125,7 +125,7 @@
         }
       }
     },
-    "FormlyNgZorro": {
+    "NgxFormlyNgZorro": {
       "projectType": "library",
       "root": "projects/formly-ng-zorro",
       "sourceRoot": "projects/formly-ng-zorro/src",
