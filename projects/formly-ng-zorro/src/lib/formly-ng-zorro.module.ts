@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NzFormModule } from 'ng-zorro-antd/form';
 import { FormlyNzCardModule } from './card/card.module';
 import { FormlyNzCascaderModule } from './cascader/cascader.module';
 import { FormlyNzCheckboxModule } from './checkbox/checkbox.module';
@@ -33,6 +34,7 @@ import { FormlyNzUploadModule } from './upload/upload.module';
     FormlyNzTreeSelectModule,
     FormlyNzUploadModule,
     FormlyNzCardModule,
+    NzFormModule,
   ],
   exports: [],
 })

@@ -32,7 +32,6 @@ export class FixedDirective implements AfterViewInit, OnChanges {
     } else {
       this.render.setStyle(controlEl, 'margin-left', unit);
     }
-    [].includes('');
   }
 
   constructor(er: ElementRef, private render: Renderer2) {

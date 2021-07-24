@@ -624,7 +624,6 @@ export class AppComponent implements OnInit {
           },
           {
             className: 'ant-col  ant-col-12',
-
             type: 'input',
             key: 'lastName',
             templateOptions: {

@@ -4,8 +4,13 @@ import {
   Renderer2,
   ElementRef,
   AfterViewInit,
+  Optional,
+  Host,
+  ViewChild,
+  ViewChildren,
 } from '@angular/core';
-import { FieldWrapper } from '@ngx-formly/core';
+import { FieldWrapper, FormlyForm } from '@ngx-formly/core';
+import { NzFormDirective, NzFormLabelComponent } from 'ng-zorro-antd/form';
 
 @Component({
   selector: 'formly-wrapper-nz-form-field',
@@ -49,7 +54,11 @@ export class FormlyWrapperFormField
   /**
    *
    */
-  constructor(er: ElementRef, private render: Renderer2) {
+  constructor(
+    er: ElementRef,
+    private render: Renderer2,
+    @Optional() private nzForm: NzFormDirective
+  ) {
     super();
     // console.log(this);
     this.el = er.nativeElement as HTMLDivElement;
@@ -60,18 +69,20 @@ export class FormlyWrapperFormField
 
   ngAfterViewInit(): void {
     // vertical 布局去掉 ant-col-xxx 列样式
+    // nzForm 有时候可能拿不到，所以还是保留 parentNode 判断
     if (
+      this.nzForm?.nzLayout === 'vertical' ||
       (this.el.parentNode.parentNode.parentNode as any).classList.contains(
         'ant-form-vertical'
       )
     ) {
-      // 拿到 class
+      // 拿到 label
       const label = this.el.children[0].querySelector('nz-form-label');
       if (label) {
         const labelClass = label.classList.value;
         /ant-col-\d+/g
           .exec(labelClass)
-          .forEach((x) => label.classList.remove(x));
+          ?.forEach((x) => label.classList.remove(x));
       }
 
       // 拿到 control
@@ -80,7 +91,7 @@ export class FormlyWrapperFormField
         const controlClass = control.classList.value;
         /ant-col-\d+/g
           .exec(controlClass)
-          .forEach((x) => control.classList.remove(x));
+          ?.forEach((x) => control.classList.remove(x));
       }
     }
 

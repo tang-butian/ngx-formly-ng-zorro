@@ -1,5 +1,10 @@
 <nz-card>
-  <form nz-form [formGroup]="form" (ngSubmit)="submit()">
+  <form
+    nz-form
+    [formGroup]="form"
+    [nzLayout]="'vertical'"
+    (ngSubmit)="submit()"
+  >
     <formly-form
       [form]="form"
       [model]="model"

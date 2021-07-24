@@ -16,6 +16,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzFormModule } from 'ng-zorro-antd/form';
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
 };
@@ -38,6 +39,7 @@ registerLocaleData(zh);
     NzButtonModule,
     NzIconModule.forRoot(icons),
     NzCardModule,
+    NzFormModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent],
