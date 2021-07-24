@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormlyNzCardModule } from './card/card.module';
 import { FormlyNzCascaderModule } from './cascader/cascader.module';
 import { FormlyNzCheckboxModule } from './checkbox/checkbox.module';
 import { FormlyNzDateModule } from './date/date.module';
@@ -31,6 +32,7 @@ import { FormlyNzUploadModule } from './upload/upload.module';
     FormlyNzTransferModule,
     FormlyNzTreeSelectModule,
     FormlyNzUploadModule,
+    FormlyNzCardModule,
   ],
   exports: [],
 })

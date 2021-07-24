@@ -16,7 +16,7 @@ import * as Input from './lib/input/index';
 import * as Date from './lib/date/index';
 import * as Checkbox from './lib/checkbox/index';
 import * as Cascader from './lib/cascader/index';
-
+import * as Card from './lib/card/index';
 export {
   Upload,
   TreeSelect,
@@ -31,4 +31,5 @@ export {
   Date,
   Checkbox,
   Cascader,
+  Card,
 };

@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { TransferItem } from 'ng-zorro-antd/transfer';
+import { CardFormly } from 'projects/formly-ng-zorro/src/lib/card';
 import { CascaderFormly } from 'projects/formly-ng-zorro/src/lib/cascader';
 import { CheckboxFormly } from 'projects/formly-ng-zorro/src/lib/checkbox';
 import {
@@ -600,6 +601,37 @@ export class AppComponent implements OnInit {
             action: 'https://localhost:44310/WeatherForecast',
           } as UploadFormly,
         },
+      },
+      {
+        className: 'ant-col  ant-col-24',
+
+        fieldGroupClassName: 'ant-row',
+        templateOptions: {
+          card: {
+            title: 'kwkw',
+          } as CardFormly,
+        },
+        wrappers: ['card'],
+        fieldGroup: [
+          {
+            className: 'ant-col  ant-col-12',
+
+            type: 'input',
+            key: 'firstName',
+            templateOptions: {
+              label: 'First Name',
+            },
+          },
+          {
+            className: 'ant-col  ant-col-12',
+
+            type: 'input',
+            key: 'lastName',
+            templateOptions: {
+              label: 'Last Name',
+            },
+          },
+        ],
       },
     ];
   }
