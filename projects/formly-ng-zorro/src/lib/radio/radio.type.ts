@@ -1,9 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  AfterViewInit,
-  OnInit,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
@@ -41,14 +36,8 @@ import { FieldType } from '@ngx-formly/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldRadio
-  extends FieldType
-  implements OnInit, AfterViewInit
-{
+export class FormlyFieldRadio extends FieldType {
   get isArray(): boolean {
     return this.to.options instanceof Array;
   }
-
-  ngOnInit(): void {}
-  ngAfterViewInit(): void {}
 }

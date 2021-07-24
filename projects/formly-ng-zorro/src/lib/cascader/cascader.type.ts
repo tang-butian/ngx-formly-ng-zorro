@@ -1,29 +1,21 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  AfterViewInit,
-  ViewChild,
-  OnInit,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
-import { NzCascaderComponent } from 'ng-zorro-antd/cascader';
-import { CascaderFormly } from '.';
 
 @Component({
   selector: 'formly-field-cascader',
   template: `
     <nz-cascader
       #cascader
-      [nzPlaceHolder]="to.placeholder || '请选择'"
+      [nzPlaceHolder]="to.placeholder"
       [nzOptions]="to.options"
       [formControl]="formControl"
       [formlyAttributes]="field"
-      [nzAllowClear]="to.cascader?.allowClear !== false"
-      [nzAutoFocus]="to.cascader?.autoFocus === true"
-      [nzBackdrop]="to.cascader?.backdrop === true"
-      [nzChangeOnSelect]="to.cascader?.changeOnSelect === true"
-      [nzExpandTrigger]="to.cascader?.expandTrigger || 'click'"
-      [nzLabelProperty]="to.cascader?.labelProperty || 'label'"
+      [nzAllowClear]="to.cascader?.allowClear"
+      [nzAutoFocus]="to.cascader?.autoFocus"
+      [nzBackdrop]="to.cascader?.backdrop"
+      [nzChangeOnSelect]="to.cascader?.changeOnSelect"
+      [nzExpandTrigger]="to.cascader?.nzExpandTrigger"
+      [nzLabelProperty]="to.cascader?.labelProperty"
       [nzLabelRender]="to.cascader?.labelRender"
       [nzMenuClassName]="to.cascader?.menuClassName"
       [nzMenuStyle]="to.cascader?.menuStyle"
@@ -31,11 +23,11 @@ import { CascaderFormly } from '.';
       [nzOptionRender]="to.cascader?.optionRender"
       [nzShowSearch]="to.cascader?.showSearch"
       [nzSuffixIcon]="to.cascader?.suffixIcon"
-      [nzValueProperty]="to.cascader?.valueProperty || 'value'"
+      [nzValueProperty]="to.cascader?.valueProperty"
       [nzChangeOn]="to.cascader?.changeOn"
       [nzColumnClassName]="to.cascader?.columnClassName"
       [nzExpandIcon]="to.cascader?.expandIcon"
-      (nzClear)="cascader?.clear()"
+      (nzClear)="to.cascader?.clear && to.cascader?.clear()"
       (ngModelChange)="
         to.cascader?.modelChange && to.cascader.modelChange($event)
       "
@@ -49,13 +41,4 @@ import { CascaderFormly } from '.';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldCascader
-  extends FieldType
-  implements OnInit, AfterViewInit
-{
-  cascader: CascaderFormly = {};
-  @ViewChild('cascader', { static: true }) nzCascader: NzCascaderComponent;
-
-  ngOnInit(): void {}
-  ngAfterViewInit(): void {}
-}
+export class FormlyFieldCascader extends FieldType {}

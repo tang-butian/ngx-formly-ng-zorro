@@ -68,7 +68,7 @@ export class FormlyFieldSelect extends FieldType implements OnInit {
     if (this.isArray) {
       this.ops = this.to.options as any;
     } else {
-      (this.to.options as Observable<any[]>).subscribe((options) => {
+      (this.to.options as Observable<any[]>)?.subscribe((options) => {
         this.ops = options;
       });
     }

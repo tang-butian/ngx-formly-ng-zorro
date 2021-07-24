@@ -1,10 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  AfterViewInit,
-  ViewChild,
-  OnInit,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
@@ -37,16 +31,4 @@ import { FieldType } from '@ngx-formly/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldCheckbox
-  extends FieldType
-  implements OnInit, AfterViewInit
-{
-  /**
-   *
-   */
-  constructor() {
-    super();
-  }
-  ngOnInit(): void {}
-  ngAfterViewInit(): void {}
-}
+export class FormlyFieldCheckbox extends FieldType {}

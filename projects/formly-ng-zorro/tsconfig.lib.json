@@ -13,7 +13,7 @@
       "es2018"
     ],
     "paths": {
-      "@formly/ng-zoor-ui":[
+      "@formly/ng-zorro-ui":[
         "src/public-api.ts"
       ]
     }

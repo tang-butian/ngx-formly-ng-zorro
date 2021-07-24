@@ -63,13 +63,15 @@ import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
         [nzMax]="to.max"
         [nzMin]="to.min"
         [nzPrecision]="to.number?.precision"
-        [nzPrecisionMode]="to.number?.precisionMode || 'toFixed'"
-        [nzStep]="to.number?.step || 1"
-        [nzInputMode]="to.number?.inputMode || 'decimal'"
+        [nzPrecisionMode]="to.number?.precisionMode"
+        [nzStep]="to.number?.step"
+        [nzInputMode]="to.number?.inputMode"
         (ngModelChange)="
           to.number.modelChange && to.number?.modelChange($event)
         "
         [ngStyle]="width"
+        [nzParser]="to.number?.parser"
+        [nzFormatter]="to.number?.formatter"
       ></nz-input-number>
 
       <nz-input-group
@@ -92,13 +94,14 @@ import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
           [nzAutocomplete]="auto"
         />
         <nz-autocomplete
-          [nzBackfill]="to.autoComplete?.backfill === true"
+          [nzBackfill]="to.autoComplete?.backfill"
           [nzDefaultActiveFirstOption]="
-            to.autoComplete?.defaultActiveFirstOption !== false
+            to.autoComplete?.defaultActiveFirstOption
           "
           [nzWidth]="to.autoComplete?.width"
           [nzOverlayClassName]="to.autoComplete?.overlayClassName"
           [nzOverlayStyle]="to.autoComplete?.overlayStyle"
+          [compareWith]="to.autoComplete?.compareWith"
           #auto
         >
           <nz-auto-option
@@ -114,28 +117,7 @@ import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldInput extends FieldType implements AfterViewInit {
-  @ViewChild('inputNumber', { static: false }) number: NzInputNumberComponent;
-  @ViewChild('auto', { static: false }) autoComplete: NzAutocompleteComponent;
-  /**
-   *
-   */
-  constructor() {
-    super();
-  }
-  ngAfterViewInit(): void {
-    if (this.to.type === 'number') {
-      this.number.nzParser = this.to.number?.parser ?? this.number.nzParser;
-      this.number.nzFormatter =
-        this.to.number?.formatter ?? this.number.nzFormatter;
-    }
-
-    if (this.to.type === 'autoComplete') {
-      this.autoComplete.compareWith =
-        this.to.autoComplete?.compareWith ?? this.autoComplete.compareWith;
-    }
-  }
-
+export class FormlyFieldInput extends FieldType {
   get width() {
     if (this.to.type === 'number' && this.to.number?.width) {
       return { width: this.to.number.width };

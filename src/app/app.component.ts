@@ -194,7 +194,7 @@ export class AppComponent implements OnInit {
         defaultValue: ['zhejiang', 'hangzhou', 'xihu'],
         templateOptions: {
           label: 'cascader',
-          placeholder: 'cascader',
+          //   placeholder: 'cascader',
           required: true,
           spanLabelFixed: 100,
 

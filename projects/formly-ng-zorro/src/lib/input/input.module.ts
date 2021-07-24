@@ -10,6 +10,7 @@ import { FormlyFieldInput } from './input.type';
 import { FormlyNzFormFieldModule } from '../form-field/form-field.module';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
+import { AutocompleteFormly, InputFormly, NumberFormly } from '.';
 @NgModule({
   declarations: [FormlyFieldInput],
   imports: [
@@ -28,6 +29,7 @@ import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
           defaultOptions: {
             templateOptions: {
               type: 'input',
+              input: {} as InputFormly,
             },
           },
         },
@@ -39,6 +41,11 @@ import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
           defaultOptions: {
             templateOptions: {
               type: 'autoComplete',
+              autoComplete: {
+                backfill: false,
+                defaultActiveFirstOption: true,
+                compareWith: (o1: any, o2: any) => o1 === o2,
+              } as AutocompleteFormly,
             },
           },
         },
@@ -48,6 +55,18 @@ import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
           defaultOptions: {
             templateOptions: {
               type: 'number',
+              number: {
+                max: Infinity,
+                min: -Infinity,
+                parser: (value: string) =>
+                  value
+                    .trim()
+                    .replace(/。/g, '.')
+                    .replace(/[^\w\.-]+/g, ''),
+                precisionMode: 'toFixed',
+                step: 1,
+                inputMode: 'decimal',
+              } as NumberFormly,
             },
           },
         },

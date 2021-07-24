@@ -5,6 +5,7 @@ import { FormlyNzFormFieldModule } from '../form-field/form-field.module';
 import { FormlyFieldCascader } from './cascader.type';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NzCascaderModule } from 'ng-zorro-antd/cascader';
+import { CascaderFormly } from '.';
 
 @NgModule({
   declarations: [FormlyFieldCascader],
@@ -20,7 +21,20 @@ import { NzCascaderModule } from 'ng-zorro-antd/cascader';
           component: FormlyFieldCascader,
           wrappers: ['form-field'],
           defaultOptions: {
-            templateOptions: {},
+            templateOptions: {
+              placeholder: '请选择',
+              cascader: {
+                allowClear: true,
+                backdrop: false,
+                changeOnSelect: false,
+                expandTrigger: 'click',
+                labelProperty: 'label',
+                showArrow: true,
+                showInput: true,
+                showSearch: false,
+                valueProperty: 'value',
+              } as CascaderFormly,
+            },
           },
         },
       ],
