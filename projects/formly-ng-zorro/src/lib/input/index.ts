@@ -159,3 +159,17 @@ export interface AutocompleteFormly extends InputFormly {
    */
   compareWith?: (o1: any, o2: any) => boolean;
 }
+
+export interface TextAreaFormly extends InputFormly {
+  /**
+   * 自适应内容高度，可设置为 boolean 或对象：{ minRows: 2, maxRows: 6 }
+   */
+  autosize?: boolean | { minRows: number; maxRows: number };
+  /**
+   * 行数
+   * @default 4
+   */
+  rows?: number;
+
+  maxCharacterCount?: number;
+}

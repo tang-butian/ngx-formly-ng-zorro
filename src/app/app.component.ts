@@ -13,6 +13,7 @@ import {
   InputFormly,
   InputGroupFormly,
   NumberFormly,
+  TextAreaFormly,
 } from 'projects/formly-ng-zorro/src/lib/input';
 import { RadioFormly } from 'projects/formly-ng-zorro/src/lib/radio';
 import { RateFormly } from 'projects/formly-ng-zorro/src/lib/rate';
@@ -103,7 +104,19 @@ export class AppComponent implements OnInit {
           } as InputFormly,
         },
       },
-
+      {
+        key: 'textarea',
+        type: 'textarea',
+        className: 'ant-col  ant-col-24',
+        templateOptions: {
+          label: 'textarea',
+          required: true,
+          spanLabelFixed: 100,
+          textarea: {
+            maxCharacterCount: 100,
+          } as TextAreaFormly,
+        },
+      },
       {
         key: 'number',
         type: 'number',

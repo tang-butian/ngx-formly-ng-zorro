@@ -10,7 +10,12 @@ import { FormlyFieldInput } from './input.type';
 import { FormlyNzFormFieldModule } from '../form-field/form-field.module';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
-import { AutocompleteFormly, InputFormly, NumberFormly } from '.';
+import {
+  AutocompleteFormly,
+  InputFormly,
+  NumberFormly,
+  TextAreaFormly,
+} from '.';
 @NgModule({
   declarations: [FormlyFieldInput],
   imports: [
@@ -85,6 +90,19 @@ import { AutocompleteFormly, InputFormly, NumberFormly } from '.';
           defaultOptions: {
             templateOptions: {
               type: 'inputGroup',
+            },
+          },
+        },
+        {
+          name: 'textarea',
+          extends: 'input',
+          defaultOptions: {
+            templateOptions: {
+              type: 'textarea',
+              textarea: {
+                rows: 4,
+                autosize: false,
+              } as TextAreaFormly,
             },
           },
         },

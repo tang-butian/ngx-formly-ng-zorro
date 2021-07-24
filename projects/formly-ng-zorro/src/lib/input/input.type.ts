@@ -74,6 +74,35 @@ import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
         [nzFormatter]="to.number?.formatter"
       ></nz-input-number>
 
+      <ng-container *ngSwitchCase="'textarea'">
+        <nz-textarea-count
+          *ngIf="to.textarea?.maxCharacterCount; else textarea"
+          [nzMaxCharacterCount]="to.textarea?.maxCharacterCount"
+        >
+          <textarea
+            [rows]="to.textarea?.rows"
+            nz-input
+            [placeholder]="to.placeholder"
+            [formControl]="formControl"
+            [nzBorderless]="to.textarea?.borderless"
+            [formlyAttributes]="field"
+            [nzAutosize]="to.textarea?.autosize"
+          ></textarea>
+        </nz-textarea-count>
+
+        <ng-template #textarea>
+          <textarea
+            [rows]="to.textarea?.rows"
+            nz-input
+            [placeholder]="to.placeholder"
+            [formControl]="formControl"
+            [nzBorderless]="to.textarea?.borderless"
+            [formlyAttributes]="field"
+            [nzAutosize]="to.textarea?.autosize"
+          ></textarea>
+        </ng-template>
+      </ng-container>
+
       <nz-input-group
         *ngSwitchCase="'autoComplete'"
         [nzPrefixIcon]="to.autoComplete?.prefixIcon"
