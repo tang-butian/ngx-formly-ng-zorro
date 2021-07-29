@@ -71,6 +71,7 @@ import {
                 precisionMode: 'toFixed',
                 step: 1,
                 inputMode: 'decimal',
+                formatter: (value: number) => value,
               } as NumberFormly,
             },
           },

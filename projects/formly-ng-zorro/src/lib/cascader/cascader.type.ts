@@ -27,6 +27,7 @@ import { FieldType } from '@ngx-formly/core';
       [nzChangeOn]="to.cascader?.changeOn"
       [nzColumnClassName]="to.cascader?.columnClassName"
       [nzExpandIcon]="to.cascader?.expandIcon"
+      [nzLoadData]="to.cascader?.loadData"
       (nzClear)="to.cascader?.clear && to.cascader?.clear()"
       (ngModelChange)="
         to.cascader?.modelChange && to.cascader.modelChange($event)

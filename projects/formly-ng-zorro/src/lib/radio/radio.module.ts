@@ -6,6 +6,7 @@ import { FormlyFieldRadio } from './radio.type';
 import { FormlyModule } from '@ngx-formly/core';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { RadioFormly } from '.';
+import { FormlySelectModule } from '@ngx-formly/core/select';
 
 @NgModule({
   declarations: [FormlyFieldRadio],
@@ -14,6 +15,7 @@ import { RadioFormly } from '.';
     NzRadioModule,
     ReactiveFormsModule,
     FormlyNzFormFieldModule,
+    FormlySelectModule,
     FormlyModule.forChild({
       types: [
         {

@@ -42,9 +42,6 @@ import { Observable } from 'rxjs';
 })
 export class FormlyFieldSlider extends FieldType implements AfterViewInit {
   @ViewChild('slider', { static: false }) slider: NzSliderComponent;
-  get isArray(): boolean {
-    return this.to.options instanceof Array;
-  }
 
   ngAfterViewInit(): void {
     if (this.to.slider?.marks) {

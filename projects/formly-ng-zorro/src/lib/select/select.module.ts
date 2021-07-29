@@ -6,6 +6,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyNzFormFieldModule } from '../form-field/form-field.module';
 import { FormlyFieldSelect } from './select.type';
 import { SelectFormly } from '.';
+import { FormlySelectModule } from '@ngx-formly/core/select';
 
 @NgModule({
   declarations: [FormlyFieldSelect],
@@ -14,6 +15,7 @@ import { SelectFormly } from '.';
     NzSelectModule,
     ReactiveFormsModule,
     FormlyNzFormFieldModule,
+    FormlySelectModule,
     FormlyModule.forChild({
       types: [
         {

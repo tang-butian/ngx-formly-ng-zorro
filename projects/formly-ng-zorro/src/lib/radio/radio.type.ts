@@ -16,28 +16,24 @@ import { FieldType } from '@ngx-formly/core';
       <ng-container *ngIf="to.type !== 'button'; else button">
         <label
           nz-radio
-          [nzValue]="o.value"
-          *ngFor="let o of isArray ? to.options : (to.options | async)"
-          [nzDisabled]="o.disabled === true"
-          >{{ o.label }}</label
+          [nzValue]="option.value"
+          *ngFor="let option of to.options | formlySelectOptions: field | async"
+          [nzDisabled]="option.disabled === true"
+          >{{ option.label }}</label
         >
       </ng-container>
 
       <ng-template #button>
         <label
           nz-radio-button
-          [nzValue]="o.value"
-          *ngFor="let o of isArray ? to.options : (to.options | async)"
-          [nzDisabled]="o.disabled === true"
-          >{{ o.label }}</label
+          [nzValue]="option.value"
+          *ngFor="let option of to.options | formlySelectOptions: field | async"
+          [nzDisabled]="option.disabled === true"
+          >{{ option.label }}</label
         >
       </ng-template>
     </nz-radio-group>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldRadio extends FieldType {
-  get isArray(): boolean {
-    return this.to.options instanceof Array;
-  }
-}
+export class FormlyFieldRadio extends FieldType {}

@@ -37,7 +37,6 @@ import { Observable } from 'rxjs';
       [nzMaxTagPlaceholder]="to.select?.maxTagPlaceholder"
       [nzOptionHeightPx]="to.select?.optionHeightPx"
       [nzOptionOverflowSize]="to.select?.optionOverflowSize"
-      [nzOptions]="ops"
       (ngModelChange)="
         to.select?.ngModelChange && to.select?.ngModelChange($event)
       "
@@ -49,28 +48,34 @@ import { Observable } from 'rxjs';
       "
       (nzOnSearch)="to.select?.onSearch && to.select?.onSearch($event)"
     >
+      <ng-container
+        *ngFor="let item of to.options | formlySelectOptions: field | async"
+      >
+        <nz-option-group *ngIf="item.group" [nzLabel]="item.label">
+          <nz-option
+            *ngFor="let child of item.group"
+            [nzValue]="child.value"
+            [nzDisabled]="child.disabled"
+            [nzLabel]="child.label"
+          >
+          </nz-option>
+        </nz-option-group>
+        <nz-option
+          *ngIf="!item.group"
+          [nzValue]="item.value"
+          [nzDisabled]="item.disabled"
+          [nzLabel]="item.label"
+        ></nz-option>
+      </ng-container>
     </nz-select>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyFieldSelect extends FieldType implements OnInit {
   @ViewChild('select', { static: true }) select: NzSelectComponent;
-  get isArray(): boolean {
-    return this.to.options instanceof Array;
-  }
-
-  ops: any[] = [];
-
   ngOnInit(): void {
     if (this.to.select?.filterOption instanceof Function) {
       this.select.nzFilterOption = this.to.select?.filterOption;
-    }
-    if (this.isArray) {
-      this.ops = this.to.options as any;
-    } else {
-      (this.to.options as Observable<any[]>)?.subscribe((options) => {
-        this.ops = options;
-      });
     }
   }
 }
