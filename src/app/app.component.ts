@@ -1,3 +1,4 @@
+import { RecursiveTemplateAstVisitor } from '@angular/compiler';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
@@ -415,12 +416,12 @@ export class AppComponent implements OnInit {
             { label: 'Orange', value: 'Orange' },
           ]).pipe(delay(100)),
           select: {
-            mode: 'tags',
+            //  mode: 'tags',
 
-            showArrow: true,
+            showArrow: false,
             showSearch: true,
             allowClear: true,
-            loading: true,
+            loading: false,
             maxMultipleCount: 2,
           } as SelectFormly,
         },
@@ -576,29 +577,7 @@ export class AppComponent implements OnInit {
           spanLabelFixed: 100,
           required: true,
           upload: {
-            fileList: [
-              {
-                uid: '1',
-                name: 'xxx.png',
-                status: 'done',
-                response: 'Server Error 500', // custom error message to show
-                url: 'http://www.baidu.com/xxx.png',
-              },
-              {
-                uid: '2',
-                name: 'yyy.png',
-                status: 'done',
-                url: 'http://www.baidu.com/yyy.png',
-              },
-              {
-                uid: '3',
-                name: 'zzz.png',
-                status: 'error',
-                response: 'Server Error 500', // custom error message to show
-                url: 'http://www.baidu.com/zzz.png',
-              },
-            ],
-            action: 'https://localhost:44310/WeatherForecast',
+            action: 'https://localhost:44310/WeatherForecast1',
           } as UploadFormly,
         },
       },
