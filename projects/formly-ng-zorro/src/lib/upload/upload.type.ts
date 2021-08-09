@@ -19,7 +19,7 @@ import { FieldType } from '@ngx-formly/core';
       [nzBeforeUpload]="to.upload?.beforeUpload"
       [nzCustomRequest]="to.upload?.customRequest"
       [nzData]="to.upload?.data"
-      [nzFileList]="to.upload?.fileList"
+      [(nzFileList)]="to.upload.fileList"
       [nzLimit]="to.upload?.limit"
       [nzFileType]="to.upload?.fileType"
       [nzFilter]="to.upload?.filter"
