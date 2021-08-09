@@ -19,8 +19,6 @@ export class FixedDirective implements AfterViewInit, OnChanges {
 
   private init(): void {
     if (!this._inited || this.num == null || this.num <= 0) return;
-    console.log(this.el.parentNode.parentNode.parentNode.parentNode);
-
     if (
       (this.el.parentNode.parentNode.parentNode.parentNode as any).tagName ===
         'FORM' &&
@@ -41,13 +39,8 @@ export class FixedDirective implements AfterViewInit, OnChanges {
     }
   }
 
-  constructor(
-    er: ElementRef,
-    private render: Renderer2,
-    @Optional() private form: NzFormDirective
-  ) {
+  constructor(er: ElementRef, private render: Renderer2) {
     this.el = er.nativeElement as HTMLDivElement;
-    console.log(this.form);
   }
 
   ngAfterViewInit(): void {
