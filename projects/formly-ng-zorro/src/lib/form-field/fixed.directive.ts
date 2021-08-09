@@ -2,10 +2,13 @@ import {
   AfterViewInit,
   Directive,
   ElementRef,
+  Host,
   Input,
   OnChanges,
+  Optional,
   Renderer2,
 } from '@angular/core';
+import { NzFormDirective } from 'ng-zorro-antd/form';
 
 @Directive({ selector: '[fixed-label]' })
 export class FixedDirective implements AfterViewInit, OnChanges {
@@ -16,7 +19,11 @@ export class FixedDirective implements AfterViewInit, OnChanges {
 
   private init(): void {
     if (!this._inited || this.num == null || this.num <= 0) return;
+    console.log(this.el.parentNode.parentNode.parentNode.parentNode);
+
     if (
+      (this.el.parentNode.parentNode.parentNode.parentNode as any).tagName ===
+        'FORM' &&
       (
         this.el.parentNode.parentNode.parentNode.parentNode as any
       ).classList.contains('ant-form-vertical')
@@ -34,8 +41,13 @@ export class FixedDirective implements AfterViewInit, OnChanges {
     }
   }
 
-  constructor(er: ElementRef, private render: Renderer2) {
+  constructor(
+    er: ElementRef,
+    private render: Renderer2,
+    @Optional() private form: NzFormDirective
+  ) {
     this.el = er.nativeElement as HTMLDivElement;
+    console.log(this.form);
   }
 
   ngAfterViewInit(): void {
