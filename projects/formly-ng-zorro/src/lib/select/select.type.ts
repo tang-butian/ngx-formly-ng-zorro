@@ -33,6 +33,7 @@ import { Observable } from 'rxjs';
       [nzMaxMultipleCount]="to.select?.maxMultipleCount"
       [nzMode]="to.select?.mode"
       [nzLoading]="to.select?.loading"
+      [nzShowArrow]="to.select?.showArrow"
       [nzMaxTagCount]="to.select?.maxTagCount"
       [nzMaxTagPlaceholder]="to.select?.maxTagPlaceholder"
       [nzOptionHeightPx]="to.select?.optionHeightPx"
