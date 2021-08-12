@@ -22,6 +22,7 @@ import { RateFormly } from 'projects/formly-ng-zorro/src/lib/rate';
 import { SelectFormly } from 'projects/formly-ng-zorro/src/lib/select';
 import { SliderFormly } from 'projects/formly-ng-zorro/src/lib/slider';
 import { SwitchFormly } from 'projects/formly-ng-zorro/src/lib/switch';
+import { TabFormly, TabsFormly } from 'projects/formly-ng-zorro/src/lib/tabs';
 import { TimeFormly } from 'projects/formly-ng-zorro/src/lib/time';
 import { TransferFormly } from 'projects/formly-ng-zorro/src/lib/transfer';
 import { TreeSelectFormly } from 'projects/formly-ng-zorro/src/lib/tree-select';
@@ -608,6 +609,71 @@ export class AppComponent implements OnInit {
             templateOptions: {
               label: 'Last Name',
             },
+          },
+        ],
+      },
+      {
+        type: 'tabs',
+        templateOptions: {
+          tabs: {
+            tabPosition: 'bottom',
+          } as TabsFormly,
+        },
+        fieldGroup: [
+          {
+            templateOptions: {
+              label: 'Personal data',
+
+              tab: {
+                disabled: true,
+              } as TabFormly,
+            },
+            fieldGroup: [
+              {
+                key: 'firstname',
+                type: 'input',
+                templateOptions: {
+                  label: 'First name',
+                  required: true,
+                },
+              },
+              {
+                key: 'age',
+                type: 'input',
+                templateOptions: {
+                  type: 'number',
+                  label: 'Age',
+                  required: true,
+                },
+              },
+            ],
+          },
+          {
+            templateOptions: { label: 'Destination' },
+            fieldGroup: [
+              {
+                key: 'country',
+                type: 'input',
+                templateOptions: {
+                  label: 'Country',
+                  required: true,
+                },
+              },
+            ],
+          },
+          {
+            templateOptions: { label: 'Day of the trip' },
+            fieldGroup: [
+              {
+                key: 'day',
+                type: 'date',
+                templateOptions: {
+                  type: 'date',
+                  label: 'Day of the trip',
+                  required: true,
+                },
+              },
+            ],
           },
         ],
       },

@@ -11,6 +11,7 @@ import { FormlyNzRateModule } from './rate/rate.module';
 import { FormlyNzSelectModule } from './select/select.module';
 import { FormlyNzSliderModule } from './slider/slider.module';
 import { FormlyNzSwitchModule } from './switch/switch.module';
+import { FormlyNzTabsModule } from './tabs/tabs.module';
 import { FormlyNzTimeModule } from './time/time.module';
 import { FormlyNzTransferModule } from './transfer/transfer.module';
 import { FormlyNzTreeSelectModule } from './tree-select/tree-select.module';
@@ -35,6 +36,7 @@ import { FormlyNzUploadModule } from './upload/upload.module';
     FormlyNzUploadModule,
     FormlyNzCardModule,
     NzFormModule,
+    FormlyNzTabsModule,
   ],
   exports: [],
 })
