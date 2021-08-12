@@ -647,4 +647,112 @@ fields: FormlyFieldConfig[] = [
     }
 ]
 ```
+### Tabs 组件布局
+```
+import { UploadFormly } from 'ngx-formly-ng-zorro/lib/upload';
+fields: FormlyFieldConfig[] = [
+{
+        type: 'tabs',
+        templateOptions: {
+          tabs: {
+            tabPosition: 'bottom',
+          } as TabsFormly,
+        },
+        fieldGroup: [
+          {
+            templateOptions: {
+              label: 'Personal data',
+
+              tab: {
+                disabled: true,
+              } as TabFormly,
+            },
+            fieldGroup: [
+              {
+                key: 'firstname',
+                type: 'input',
+                templateOptions: {
+                  label: 'First name',
+                  required: true,
+                },
+              },
+              {
+                key: 'age',
+                type: 'input',
+                templateOptions: {
+                  type: 'number',
+                  label: 'Age',
+                  required: true,
+                },
+              },
+            ],
+          },
+          {
+            templateOptions: { label: 'Destination' },
+            fieldGroup: [
+              {
+                key: 'country',
+                type: 'input',
+                templateOptions: {
+                  label: 'Country',
+                  required: true,
+                },
+              },
+            ],
+          },
+          {
+            templateOptions: { label: 'Day of the trip' },
+            fieldGroup: [
+              {
+                key: 'day',
+                type: 'date',
+                templateOptions: {
+                  type: 'date',
+                  label: 'Day of the trip',
+                  required: true,
+                },
+              },
+            ],
+          },
+        ],
+      }
+]
+```
+### Card 组件布局
+```
+import { UploadFormly } from 'ngx-formly-ng-zorro/lib/upload';
+fields: FormlyFieldConfig[] = [
+   {
+        className: 'ant-col  ant-col-24',
+
+        fieldGroupClassName: 'ant-row',
+        templateOptions: {
+          card: {
+            title: 'kwkw',
+          } as CardFormly,
+        },
+        wrappers: ['card'],
+        fieldGroup: [
+          {
+            className: 'ant-col  ant-col-12',
+
+            type: 'input',
+            key: 'firstName',
+            templateOptions: {
+              label: 'First Name',
+            },
+          },
+          {
+            className: 'ant-col  ant-col-12',
+            type: 'input',
+            key: 'lastName',
+            templateOptions: {
+              label: 'Last Name',
+            },
+          },
+        ],
+      },
+]
+```
+
 更详细请看 [app.component.ts](https://github.com/2693252993/ngx-formly-ng-zorro/blob/main/src/app/app.component.ts)及[app.component.html](https://github.com/2693252993/ngx-formly-ng-zorro/blob/main/src/app/app.component.html)
