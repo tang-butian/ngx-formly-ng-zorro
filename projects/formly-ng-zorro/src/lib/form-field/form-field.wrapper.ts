@@ -33,7 +33,6 @@ import {
         </nz-form-label>
       </ng-container>
       <nz-form-control
-        #control
         [nzSpan]="to.grid?.control?.span"
         [nzValidateStatus]="errorState"
         [nzErrorTip]="errorTpl"
@@ -56,8 +55,6 @@ export class FormlyWrapperFormField
 {
   private el: HTMLDivElement;
 
-  @ViewChild('control') control: NzFormControlComponent;
-
   /**
    *
    */
@@ -75,16 +72,11 @@ export class FormlyWrapperFormField
   }
 
   ngAfterViewInit(): void {
-    if (this.to?.label === 'input-group') {
-      console.log(this.to);
-      console.log(this.control);
-    }
-
     // vertical 布局去掉 ant-col-xxx 列样式
     // nzForm 有时候可能拿不到，所以还是保留 parentNode 判断
     if (
       this.nzForm?.nzLayout === 'vertical' ||
-      (this.el.parentNode.parentNode.parentNode as any).classList.contains(
+      (this.el.parentNode.parentNode?.parentNode as any)?.classList.contains(
         'ant-form-vertical'
       )
     ) {
