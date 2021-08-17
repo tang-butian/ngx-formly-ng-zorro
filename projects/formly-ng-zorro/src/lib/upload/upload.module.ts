@@ -26,6 +26,7 @@ import { UploadFormly } from '.';
           component: FormlyFieldUpload,
           wrappers: ['form-field'],
           defaultOptions: {
+            className: 'ant-col  ant-col-12',
             templateOptions: {
               type: 'select',
               upload: {

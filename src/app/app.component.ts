@@ -644,6 +644,9 @@ export class AppComponent implements OnInit {
                   type: 'number',
                   label: 'Age',
                   required: true,
+                  number: {
+                    formatter: (value: number) => value,
+                  } as NumberFormly,
                 },
               },
             ],
@@ -677,11 +680,41 @@ export class AppComponent implements OnInit {
           },
         ],
       },
+      {
+        // type: 'input-group',
+        wrappers: ['input-group'],
+        className: 'ant-col  ant-col-24',
+
+        templateOptions: {
+          label: 'input-group',
+          required: true,
+          spanLabelFixed: 100,
+        },
+        // validation: { show: false },
+        fieldGroup: [
+          {
+            type: 'input',
+            key: 'inputtest1',
+            templateOptions: {
+              required: true,
+            },
+            expressionProperties: {},
+          },
+          {
+            type: 'input',
+            key: 'inputtest2',
+            templateOptions: {
+              required: true,
+            },
+          },
+        ],
+      },
     ];
   }
 
   submit() {
     console.log(this.form.valid);
+    console.log(this.form);
 
     alert(JSON.stringify(this.model));
   }

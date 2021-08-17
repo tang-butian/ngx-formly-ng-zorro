@@ -21,6 +21,7 @@ import { DateFormly, RangeDateFormly } from '.';
           component: FormlyFieldDate,
           wrappers: ['form-field'],
           defaultOptions: {
+            className: 'ant-col  ant-col-12',
             templateOptions: {
               type: 'date',
               date: {
@@ -41,6 +42,7 @@ import { DateFormly, RangeDateFormly } from '.';
           name: 'rangeDate',
           extends: 'date',
           defaultOptions: {
+            className: 'ant-col  ant-col-12',
             templateOptions: {
               type: 'range',
               range: {

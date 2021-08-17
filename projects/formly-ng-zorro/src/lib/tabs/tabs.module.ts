@@ -20,6 +20,7 @@ import { TabsFormly } from '.';
           name: 'tabs',
           component: FormlyFieldTabs,
           defaultOptions: {
+            className: 'ant-col  ant-col-12',
             templateOptions: {
               tabs: {
                 animated: true,

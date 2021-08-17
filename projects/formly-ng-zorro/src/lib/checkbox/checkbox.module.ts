@@ -22,6 +22,7 @@ import { FormlyNzFormFieldModule } from '../form-field/form-field.module';
           component: FormlyFieldCheckbox,
           wrappers: ['form-field'],
           defaultOptions: {
+            className: 'ant-col  ant-col-12',
             templateOptions: {},
           },
         },

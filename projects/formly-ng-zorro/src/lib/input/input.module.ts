@@ -29,9 +29,11 @@ import {
       types: [
         {
           name: 'input',
+
           component: FormlyFieldInput,
           wrappers: ['form-field'],
           defaultOptions: {
+            className: 'ant-col  ant-col-12',
             templateOptions: {
               type: 'input',
               input: {} as InputFormly,
@@ -44,6 +46,7 @@ import {
           name: 'autoComplete',
           extends: 'input',
           defaultOptions: {
+            className: 'ant-col  ant-col-12',
             templateOptions: {
               type: 'autoComplete',
               autoComplete: {
@@ -59,6 +62,7 @@ import {
           extends: 'input',
           defaultOptions: {
             templateOptions: {
+              className: 'ant-col  ant-col-12',
               type: 'number',
               number: {
                 max: Infinity,
@@ -80,6 +84,7 @@ import {
           name: 'integer',
           extends: 'input',
           defaultOptions: {
+            className: 'ant-col  ant-col-12',
             templateOptions: {
               type: 'number',
             },
@@ -89,6 +94,7 @@ import {
           name: 'inputGroup',
           extends: 'input',
           defaultOptions: {
+            className: 'ant-col  ant-col-12',
             templateOptions: {
               type: 'inputGroup',
             },
@@ -98,6 +104,7 @@ import {
           name: 'textarea',
           extends: 'input',
           defaultOptions: {
+            className: 'ant-col  ant-col-12',
             templateOptions: {
               type: 'textarea',
               textarea: {

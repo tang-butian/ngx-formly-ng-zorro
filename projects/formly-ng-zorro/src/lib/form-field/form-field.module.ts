@@ -4,14 +4,16 @@ import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { FormlyWrapperFormField } from './form-field.wrapper';
-import { FixedDirective } from './fixed.directive';
+import { FixedDirective } from '../directive/fixed.directive';
+import { DirectiveModule } from '../directive/directive.module';
 
 @NgModule({
-  declarations: [FormlyWrapperFormField, FixedDirective],
+  declarations: [FormlyWrapperFormField],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     NzFormModule,
+    DirectiveModule,
     FormlyModule.forChild({
       wrappers: [
         {

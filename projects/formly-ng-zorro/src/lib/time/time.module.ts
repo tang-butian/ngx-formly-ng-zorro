@@ -21,6 +21,7 @@ import { TimeFormly } from '.';
           component: FormlyFieldTime,
           wrappers: ['form-field'],
           defaultOptions: {
+            className: 'ant-col  ant-col-12',
             templateOptions: {
               time: {
                 allowEmpty: true,

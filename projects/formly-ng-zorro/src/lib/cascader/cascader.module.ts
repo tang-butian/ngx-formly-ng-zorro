@@ -21,6 +21,7 @@ import { CascaderFormly } from '.';
           component: FormlyFieldCascader,
           wrappers: ['form-field'],
           defaultOptions: {
+            className: 'ant-col  ant-col-12',
             templateOptions: {
               placeholder: '请选择',
               cascader: {

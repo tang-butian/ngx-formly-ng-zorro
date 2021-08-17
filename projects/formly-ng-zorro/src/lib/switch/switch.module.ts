@@ -20,6 +20,7 @@ import { SwitchFormly } from '.';
           component: FormlyFieldSwitch,
           wrappers: ['form-field'],
           defaultOptions: {
+            className: 'ant-col  ant-col-12',
             templateOptions: {
               switch: {} as SwitchFormly,
             },

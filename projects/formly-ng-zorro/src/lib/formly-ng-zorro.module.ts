@@ -4,7 +4,9 @@ import { FormlyNzCardModule } from './card/card.module';
 import { FormlyNzCascaderModule } from './cascader/cascader.module';
 import { FormlyNzCheckboxModule } from './checkbox/checkbox.module';
 import { FormlyNzDateModule } from './date/date.module';
+import { FixedDirective } from './directive/fixed.directive';
 import { FormlyNzFormFieldModule } from './form-field/form-field.module';
+import { FormlyNzInputGroupModule } from './input-group/input-group.module';
 import { FormlyNzInputModule } from './input/input.module';
 import { FormlyNzRadioModule } from './radio/radio.module';
 import { FormlyNzRateModule } from './rate/rate.module';
@@ -37,6 +39,7 @@ import { FormlyNzUploadModule } from './upload/upload.module';
     FormlyNzCardModule,
     NzFormModule,
     FormlyNzTabsModule,
+    FormlyNzInputGroupModule,
   ],
   exports: [],
 })

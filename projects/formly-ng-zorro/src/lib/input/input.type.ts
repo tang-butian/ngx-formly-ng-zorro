@@ -12,7 +12,7 @@ import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
   selector: 'formly-field-input',
   template: `
     <ng-container [ngSwitch]="to.type">
-      <nz-input-group
+      <!-- <nz-input-group
         *ngSwitchCase="'input'"
         [nzPrefixIcon]="to.input?.prefixIcon"
         [nzSuffixIcon]="to.input?.suffixIcon"
@@ -22,15 +22,16 @@ import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
         [nzAddOnAfter]="to.input?.addOnAfter"
         [nzPrefix]="to.input?.prefix"
         [nzSuffix]="to.input?.suffix"
-      >
-        <input
-          nz-input
-          [placeholder]="to.placeholder"
-          [formControl]="formControl"
-          [nzBorderless]="to.input?.borderless"
-          [formlyAttributes]="field"
-        />
-      </nz-input-group>
+      > -->
+      <input
+        *ngSwitchCase="'input'"
+        nz-input
+        [placeholder]="to.placeholder"
+        [formControl]="formControl"
+        [nzBorderless]="to.input?.borderless"
+        [formlyAttributes]="field"
+      />
+      <!-- </nz-input-group> -->
 
       <nz-input-group
         *ngSwitchCase="'password'"
@@ -71,7 +72,7 @@ import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
         "
         [ngStyle]="width"
         [nzParser]="to.number?.parser"
-        [nzFormatter]="to.number?.formatter"
+        [nzFormatter]="to?.number?.formatter"
       ></nz-input-number>
 
       <ng-container *ngSwitchCase="'textarea'">

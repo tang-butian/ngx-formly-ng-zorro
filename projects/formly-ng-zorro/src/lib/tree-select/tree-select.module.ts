@@ -24,6 +24,7 @@ import { NzTreeNode } from 'ng-zorro-antd/tree';
           component: FormlyFieldTreeSelect,
           wrappers: ['form-field'],
           defaultOptions: {
+            className: 'ant-col  ant-col-12',
             templateOptions: {
               treeSelect: {
                 dropdownMatchSelectWidth: true,

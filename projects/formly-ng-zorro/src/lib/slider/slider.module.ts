@@ -22,6 +22,7 @@ import { SliderFormly } from '.';
           component: FormlyFieldSlider,
           wrappers: ['form-field'],
           defaultOptions: {
+            className: 'ant-col  ant-col-12',
             templateOptions: {
               slider: {
                 dots: false,

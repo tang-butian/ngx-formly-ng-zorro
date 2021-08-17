@@ -25,6 +25,7 @@ import { TransferComponent } from './transfer.component';
           component: FormlyFieldTransfer,
           wrappers: ['form-field'],
           defaultOptions: {
+            className: 'ant-col  ant-col-12',
             templateOptions: {
               transfer: {
                 dataSource: [],

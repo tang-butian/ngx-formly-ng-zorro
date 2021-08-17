@@ -23,6 +23,7 @@ import { FormlySelectModule } from '@ngx-formly/core/select';
           component: FormlyFieldRadio,
           wrappers: ['form-field'],
           defaultOptions: {
+            className: 'ant-col  ant-col-12',
             templateOptions: {
               radio: {
                 buttonStyle: 'outline',

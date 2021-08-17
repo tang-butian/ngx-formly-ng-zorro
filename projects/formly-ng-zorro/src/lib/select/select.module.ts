@@ -23,6 +23,7 @@ import { FormlySelectModule } from '@ngx-formly/core/select';
           component: FormlyFieldSelect,
           wrappers: ['form-field'],
           defaultOptions: {
+            className: 'ant-col  ant-col-12',
             templateOptions: {
               select: {
                 compareWith: (o1: any, o2: any) => o1 === o2,

@@ -10,7 +10,11 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { FieldWrapper, FormlyForm } from '@ngx-formly/core';
-import { NzFormDirective, NzFormLabelComponent } from 'ng-zorro-antd/form';
+import {
+  NzFormControlComponent,
+  NzFormDirective,
+  NzFormLabelComponent,
+} from 'ng-zorro-antd/form';
 
 @Component({
   selector: 'formly-wrapper-nz-form-field',
@@ -29,6 +33,7 @@ import { NzFormDirective, NzFormLabelComponent } from 'ng-zorro-antd/form';
         </nz-form-label>
       </ng-container>
       <nz-form-control
+        #control
         [nzSpan]="to.grid?.control?.span"
         [nzValidateStatus]="errorState"
         [nzErrorTip]="errorTpl"
@@ -51,6 +56,8 @@ export class FormlyWrapperFormField
 {
   private el: HTMLDivElement;
 
+  @ViewChild('control') control: NzFormControlComponent;
+
   /**
    *
    */
@@ -64,10 +71,15 @@ export class FormlyWrapperFormField
     this.el = er.nativeElement as HTMLDivElement;
   }
   get errorState() {
-    return this.showError ? 'error' : '';
+    return this.showError ? 'error' : 'success';
   }
 
   ngAfterViewInit(): void {
+    if (this.to?.label === 'input-group') {
+      console.log(this.to);
+      console.log(this.control);
+    }
+
     // vertical 布局去掉 ant-col-xxx 列样式
     // nzForm 有时候可能拿不到，所以还是保留 parentNode 判断
     if (
@@ -96,9 +108,8 @@ export class FormlyWrapperFormField
     }
 
     // 设置 gutter
-    const gutter = (this.el.parentNode.parentNode as any).attributes[
-      'ng-reflect-nz-gutter'
-    ];
+    const attribute = (this.el.parentNode.parentNode as any)?.attributes;
+    const gutter = attribute && attribute['ng-reflect-nz-gutter'];
     if (gutter) {
       const padding = (gutter.value - 0) / 2;
       this.render.setStyle(this.el.parentNode, 'padding-left', `${padding}px`);
@@ -107,7 +118,7 @@ export class FormlyWrapperFormField
   }
 
   getFlexStyle() {
-    if (this.to.spanLabelFixed) {
+    if (this.to?.spanLabelFixed) {
       // prettier-ignore
       return { 'flex': '0 0 100px','flex-basis': '100'}
       // return { 'flex': `0 0 ${this.to.spanLabelFixed}px` };
@@ -116,8 +127,8 @@ export class FormlyWrapperFormField
   }
 
   getMaxWidh() {
-    if (this.to.spanLabelFixed) {
-      return { 'max-width': `calc(100% - ${this.to.spanLabelFixed}px)` };
+    if (this.to?.spanLabelFixed) {
+      return { 'max-width': `calc(100% - ${this.to?.spanLabelFixed}px)` };
     }
     return null;
   }

@@ -21,6 +21,7 @@ import { RateFormly } from '.';
           component: FormlyFieldRate,
           wrappers: ['form-field'],
           defaultOptions: {
+            className: 'ant-col  ant-col-12',
             templateOptions: {
               rate: {
                 allowClear: true,
