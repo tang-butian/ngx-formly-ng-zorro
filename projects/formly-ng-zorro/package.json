@@ -1,5 +1,5 @@
 {
-  "name": "ngx-formly-ng-zorro2",
+  "name": "ngx-formly-ng-zorro",
   "version": "0.0.8",
   "peerDependencies": {
     "@angular/common": "^13.2.4",
@@ -8,6 +8,6 @@
     "ng-zorro-antd": ">=11.0.0"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.3.0"
   }
 }
