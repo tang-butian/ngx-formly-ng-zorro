@@ -13,7 +13,7 @@
     ng add @ngx-formly/schematics
     ```
 3. 安装 Ngx-Formly-Ng-Zorro
-  版本13对应Angular 13，以此类推
+  版本13对应Angular 13，以此类推；目前已支持Angular 15
    ```
     npm i ngx-formly-ng-zorro
    ```
