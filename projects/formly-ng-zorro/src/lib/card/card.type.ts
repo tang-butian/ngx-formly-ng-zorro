@@ -14,6 +14,7 @@ import { FieldType, FieldWrapper } from '@ngx-formly/core';
       [nzTitle]="props.card?.title"
       [nzType]="props.card?.type"
       [nzLoading]="props.card?.loading"
+      [nzSize]="props.card?.size || 'default'"
     >
       <ng-container #fieldComponent></ng-container>
     </nz-card>

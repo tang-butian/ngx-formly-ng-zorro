@@ -47,4 +47,10 @@ export interface CardFormly {
    * 卡片类型，可设置为 inner 或 不设置
    */
   type?: 'inner';
+
+  /**
+   * 卡片的尺寸
+   * @default 'default'
+   */
+  size?: 'default' | 'small';
 }

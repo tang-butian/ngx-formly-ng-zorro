@@ -588,6 +588,7 @@ export class AppComponent implements OnInit {
         templateOptions: {
           card: {
             title: 'kwkw',
+            size: 'small'
           } as CardFormly,
         },
         wrappers: ['card'],
@@ -598,7 +599,7 @@ export class AppComponent implements OnInit {
             type: 'input',
             key: 'firstName',
             templateOptions: {
-              label: 'First Name',
+              label: 'First Name'
             },
           },
           {
