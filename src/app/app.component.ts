@@ -669,6 +669,7 @@ export class AppComponent implements OnInit {
               {
                 key: 'day',
                 type: 'date',
+                className: 'ant-col  ant-col-24',
                 templateOptions: {
                   type: 'date',
                   label: 'Day of the trip',

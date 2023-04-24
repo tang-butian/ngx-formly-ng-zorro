@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   AfterViewInit,
   ViewChild,
+  OnInit,
 } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { NzAutocompleteComponent } from 'ng-zorro-antd/auto-complete';
@@ -11,45 +12,45 @@ import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
 @Component({
   selector: 'formly-field-input',
   template: `
-    <ng-container [ngSwitch]="to.type">
+    <ng-container [ngSwitch]="props.type">
       <!-- <nz-input-group
         *ngSwitchCase="'input'"
-        [nzPrefixIcon]="to.input?.prefixIcon"
-        [nzSuffixIcon]="to.input?.suffixIcon"
-        [nzAddOnAfterIcon]="to.input?.addOnAfterIcon"
-        [nzAddOnBeforeIcon]="to.input?.addOnBeforeIcon"
-        [nzAddOnBefore]="to.input?.addOnBefore"
-        [nzAddOnAfter]="to.input?.addOnAfter"
-        [nzPrefix]="to.input?.prefix"
-        [nzSuffix]="to.input?.suffix"
+        [nzPrefixIcon]="props.input?.prefixIcon"
+        [nzSuffixIcon]="props.input?.suffixIcon"
+        [nzAddOnAfterIcon]="props.input?.addOnAfterIcon"
+        [nzAddOnBeforeIcon]="props.input?.addOnBeforeIcon"
+        [nzAddOnBefore]="props.input?.addOnBefore"
+        [nzAddOnAfter]="props.input?.addOnAfter"
+        [nzPrefix]="props.input?.prefix"
+        [nzSuffix]="props.input?.suffix"
       > -->
       <input
         *ngSwitchCase="'input'"
         nz-input
-        [placeholder]="to.placeholder"
+        [placeholder]="props.placeholder"
         [formControl]="formControl"
-        [nzBorderless]="to.input?.borderless"
+        [nzBorderless]="props.input?.borderless"
         [formlyAttributes]="field"
       />
       <!-- </nz-input-group> -->
 
       <nz-input-group
         *ngSwitchCase="'password'"
-        [nzPrefixIcon]="to.input?.prefixIcon"
-        [nzSuffixIcon]="to.input?.suffixIcon"
-        [nzAddOnAfterIcon]="to.input?.addOnAfterIcon"
-        [nzAddOnBeforeIcon]="to.input?.addOnBeforeIcon"
-        [nzAddOnBefore]="to.input?.addOnBefore"
-        [nzAddOnAfter]="to.input?.addOnAfter"
-        [nzPrefix]="to.input?.prefix"
-        [nzSuffix]="to.input?.suffix"
+        [nzPrefixIcon]="props.input?.prefixIcon"
+        [nzSuffixIcon]="props.input?.suffixIcon"
+        [nzAddOnAfterIcon]="props.input?.addOnAfterIcon"
+        [nzAddOnBeforeIcon]="props.input?.addOnBeforeIcon"
+        [nzAddOnBefore]="props.input?.addOnBefore"
+        [nzAddOnAfter]="props.input?.addOnAfter"
+        [nzPrefix]="props.input?.prefix"
+        [nzSuffix]="props.input?.suffix"
       >
         <input
           type="password"
           nz-input
-          [placeholder]="to.placeholder"
+          [placeholder]="props.placeholder"
           [formControl]="formControl"
-          [nzBorderless]="to.input?.borderless"
+          [nzBorderless]="props.input?.borderless"
           [formlyAttributes]="field"
         />
       </nz-input-group>
@@ -57,85 +58,85 @@ import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
       <nz-input-number
         #inputNumber
         *ngSwitchCase="'number'"
-        [placeholder]="to.placeholder"
+        [placeholder]="props.placeholder"
         [formControl]="formControl"
-        [nzBorderless]="to.input?.borderless"
+        [nzBorderless]="props.input?.borderless"
         [formlyAttributes]="field"
-        [nzMax]="to.max"
-        [nzMin]="to.min"
-        [nzPrecision]="to.number?.precision"
-        [nzPrecisionMode]="to.number?.precisionMode"
-        [nzStep]="to.number?.step"
-        [nzInputMode]="to.number?.inputMode"
+        [nzMax]="props.max"
+        [nzMin]="props.min"
+        [nzPrecision]="props.number?.precision"
+        [nzPrecisionMode]="props.number?.precisionMode"
+        [nzStep]="props.number?.step"
+        [nzInputMode]="props.number?.inputMode"
         (ngModelChange)="
-          to.number.modelChange && to.number?.modelChange($event)
+          props.number.modelChange && props.number?.modelChange($event)
         "
         [ngStyle]="width"
-        [nzParser]="to.number?.parser"
+        [nzParser]="to?.number?.parser"
         [nzFormatter]="to?.number?.formatter"
       ></nz-input-number>
 
       <ng-container *ngSwitchCase="'textarea'">
         <nz-textarea-count
-          *ngIf="to.textarea?.maxCharacterCount; else textarea"
-          [nzMaxCharacterCount]="to.textarea?.maxCharacterCount"
+          *ngIf="props.textarea?.maxCharacterCount; else textarea"
+          [nzMaxCharacterCount]="props.textarea?.maxCharacterCount"
         >
           <textarea
-            [rows]="to.textarea?.rows"
+            [rows]="props.textarea?.rows"
             nz-input
-            [placeholder]="to.placeholder"
+            [placeholder]="props.placeholder"
             [formControl]="formControl"
-            [nzBorderless]="to.textarea?.borderless"
+            [nzBorderless]="props.textarea?.borderless"
             [formlyAttributes]="field"
-            [nzAutosize]="to.textarea?.autosize"
+            [nzAutosize]="props.textarea?.autosize"
           ></textarea>
         </nz-textarea-count>
 
         <ng-template #textarea>
           <textarea
-            [rows]="to.textarea?.rows"
+            [rows]="props.textarea?.rows"
             nz-input
-            [placeholder]="to.placeholder"
+            [placeholder]="props.placeholder"
             [formControl]="formControl"
-            [nzBorderless]="to.textarea?.borderless"
+            [nzBorderless]="props.textarea?.borderless"
             [formlyAttributes]="field"
-            [nzAutosize]="to.textarea?.autosize"
+            [nzAutosize]="props.textarea?.autosize"
           ></textarea>
         </ng-template>
       </ng-container>
 
       <nz-input-group
         *ngSwitchCase="'autoComplete'"
-        [nzPrefixIcon]="to.autoComplete?.prefixIcon"
-        [nzSuffixIcon]="to.autoComplete?.suffixIcon"
-        [nzAddOnAfterIcon]="to.autoComplete?.addOnAfterIcon"
-        [nzAddOnBeforeIcon]="to.autoComplete?.addOnBeforeIcon"
-        [nzAddOnBefore]="to.autoComplete?.addOnBefore"
-        [nzAddOnAfter]="to.autoComplete?.addOnAfter"
-        [nzPrefix]="to.autoComplete?.prefix"
-        [nzSuffix]="to.autoComplete?.suffix"
+        [nzPrefixIcon]="props.autoComplete?.prefixIcon"
+        [nzSuffixIcon]="props.autoComplete?.suffixIcon"
+        [nzAddOnAfterIcon]="props.autoComplete?.addOnAfterIcon"
+        [nzAddOnBeforeIcon]="props.autoComplete?.addOnBeforeIcon"
+        [nzAddOnBefore]="props.autoComplete?.addOnBefore"
+        [nzAddOnAfter]="props.autoComplete?.addOnAfter"
+        [nzPrefix]="props.autoComplete?.prefix"
+        [nzSuffix]="props.autoComplete?.suffix"
       >
         <input
           nz-input
-          [placeholder]="to.placeholder"
+          [placeholder]="props.placeholder"
           [formControl]="formControl"
-          [nzBorderless]="to.autoComplete?.borderless"
+          [nzBorderless]="props.autoComplete?.borderless"
           [formlyAttributes]="field"
           [nzAutocomplete]="auto"
         />
         <nz-autocomplete
-          [nzBackfill]="to.autoComplete?.backfill"
+          [nzBackfill]="props.autoComplete?.backfill"
           [nzDefaultActiveFirstOption]="
-            to.autoComplete?.defaultActiveFirstOption
+            props.autoComplete?.defaultActiveFirstOption
           "
-          [nzWidth]="to.autoComplete?.width"
-          [nzOverlayClassName]="to.autoComplete?.overlayClassName"
-          [nzOverlayStyle]="to.autoComplete?.overlayStyle"
-          [compareWith]="to.autoComplete?.compareWith"
+          [nzWidth]="props.autoComplete?.width"
+          [nzOverlayClassName]="props.autoComplete?.overlayClassName"
+          [nzOverlayStyle]="props.autoComplete?.overlayStyle"
+          [compareWith]="props.autoComplete?.compareWith"
           #auto
         >
           <nz-auto-option
-            *ngFor="let option of to.autoComplete.dataSource"
+            *ngFor="let option of props.autoComplete.dataSource"
             [nzLabel]="option.label"
             [nzValue]="option.value"
           >
@@ -147,11 +148,25 @@ import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldInput extends FieldType {
+export class FormlyFieldInput extends FieldType implements OnInit {
+
+
+
+  ngOnInit(): void {
+    if (this.props.type === 'number') {
+      // 设置初始化
+      this.props.number.parser = this.props.number.parser || ((value: string) => value.trim().replace(/。/g, '.').replace(/[^\w\.-]+/g, ''));
+      this.props.number.formatter = this.props.number.formatter || ((value: number | string) => value);
+    }
+  }
+
+
+
   get width() {
-    if (this.to.type === 'number' && this.to.number?.width) {
-      return { width: this.to.number.width };
+    if (this.props.type === 'number' && this.props.number?.width) {
+      return { width: this.props.number.width };
     }
     return '';
   }
+  
 }

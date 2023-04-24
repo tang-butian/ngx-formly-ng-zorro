@@ -23,7 +23,10 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
             "styles": [
               "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.less"
@@ -58,29 +61,32 @@
                 }
               ]
             },
-            "development": {
+            "development":{
               "buildOptimizer": false,
+              "sourceMap":true,
               "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
-            },
-            "defaultConfiguration": "production"
+"vendorChunk": true ,
+"extractLicenses": false
+            }
+           
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          
           "options": {
             "browserTarget": "ngx-formly-ng-zorro:build"
+            
           },
+          
           "configurations": {
+            
             "production": {
               "browserTarget": "ngx-formly-ng-zorro:build:production"
+             
             },
-            "development": {
-              "browserTarget": "ngx-formly-ng-zorro:build:development"
-            }
+            "development":{}
+         
           },
           "defaultConfiguration": "development"
         },
@@ -97,7 +103,10 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
             "styles": [
               "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.less"
@@ -113,7 +122,9 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "e2e": {
@@ -163,7 +174,9 @@
               "projects/formly-ng-zorro/tsconfig.lib.json",
               "projects/formly-ng-zorro/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
