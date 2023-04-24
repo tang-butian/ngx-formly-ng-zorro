@@ -471,6 +471,7 @@ export class AppComponent implements OnInit {
             onOk: (value: Date) => {
               console.log(value);
             },
+            status: 'error'
           } as DateFormly,
         },
       },

@@ -63,6 +63,23 @@ export interface BaseDateFormly {
     | FunctionProp<TemplateRef<NzSafeAny> | string>;
 
   /**
+   * 输入框大小，large 高度为 40px，small 为 24px，默认是 32px
+   *
+   */
+  size?: 'large' | 'small';
+  
+  /**
+   * 设置校验状态
+   */
+  status?: 'error' | 'warning';
+
+  /**
+   * 选择框弹出的位置
+   * @default 'bottomLeft'
+   */
+  placement?: 'bottomLeft' | 'bottomRight' | 'topLeft' | 'topRight';
+
+  /**
    * 自定义的后缀图标
    */
   suffixIcon?: string | TemplateRef<any>;
@@ -119,6 +136,12 @@ export interface DateFormly extends BaseDateFormly {
    * @default true
    */
   showNow?: boolean;
+
+  /**
+   * 是否在每一行显示周数（仅日期选择器支持。周选择器始终显示周数）
+   */
+  showWeekNumber?: boolean;
+
   /**
    * 点击确定按钮的回调
    */
@@ -147,6 +170,10 @@ export interface RangeDateFormly extends BaseDateFormly {
    */
   showTime?: boolean | object;
 
+  /**
+   * 是否在每一行显示周数（仅日期选择器支持。周选择器始终显示周数）
+   */
+  showWeekNumber?: boolean;
   /**
    * 不可选择的时间
    */

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
@@ -20,6 +20,9 @@ import { FieldType } from '@ngx-formly/core';
         [nzPlaceHolder]="props.placeholder"
         [nzPopupStyle]="props.date?.popupStyle"
         [nzRenderExtraFooter]="props.date?.renderExtraFooter"
+        [nzSize]="props.date?.size"
+        [nzStatus]="props.date?.status"
+        [nzPlacement]="props.date?.placement || 'bottomLeft'"
         [nzSuffixIcon]="props.date?.suffixIcon"
         [nzBorderless]="props.date?.borderless"
         [nzInline]="props.date?.inline"
@@ -28,6 +31,7 @@ import { FieldType } from '@ngx-formly/core';
         [nzShowTime]="props.date?.showTime"
         [nzShowToday]="props.date?.showToday"
         [nzShowNow]="props.date?.showNow"
+        [nzShowWeekNumber]="props.date?.showWeekNumber"
         (nzOnOpenChange)="
           props.date?.onOpenChange && props.date?.onOpenChange($event)
         "
@@ -49,6 +53,9 @@ import { FieldType } from '@ngx-formly/core';
         [nzPlaceHolder]="props.placeholder"
         [nzPopupStyle]="props.range?.popupStyle"
         [nzRenderExtraFooter]="props.range?.renderExtraFooter"
+        [nzSize]="props.range?.size"
+        [nzStatus]="props.range?.status"
+        [nzPlacement]="props.range?.placement || 'bottomLeft'"
         [nzSuffixIcon]="props.range?.suffixIcon"
         [nzBorderless]="props.range?.borderless"
         [nzInline]="props.range?.inline"
@@ -57,6 +64,7 @@ import { FieldType } from '@ngx-formly/core';
         [nzShowTime]="props.range?.showTime"
         [nzShowToday]="props.range?.showToday"
         [nzShowNow]="props.range?.showNow"
+        [nzShowWeekNumber]="props.date?.showWeekNumber"
         [nzRanges]="props.range?.ranges"
         [nzSeparator]="props.range?.separator"
         (nzOnOpenChange)="
@@ -72,4 +80,8 @@ import { FieldType } from '@ngx-formly/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldDate extends FieldType {}
+export class FormlyFieldDate extends FieldType implements OnInit {
+  ngOnInit(): void {
+    console.log(this.props);
+  }
+}
