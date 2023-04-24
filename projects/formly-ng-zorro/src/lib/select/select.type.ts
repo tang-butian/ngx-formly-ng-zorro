@@ -17,40 +17,40 @@ import { Observable } from 'rxjs';
   template: `
     <nz-select
       #select
-      [nzPlaceHolder]="to.placeholder"
+      [nzPlaceHolder]="props.placeholder"
       [formControl]="formControl"
       [formlyAttributes]="field"
-      [compareWith]="to.select?.compareWith"
-      [nzAllowClear]="to.select?.allowClear"
-      [nzAutoClearSearchValue]="to.select?.autoClearSearchValue"
-      [nzBackdrop]="to.select?.backdrop"
-      [nzBorderless]="to.select?.borderless"
-      [nzOpen]="to.select?.open"
-      [nzDropdownClassName]="to.select?.dropdownMatchSelectWidth"
-      [nzDropdownStyle]="to.select?.dropdownStyle"
-      [nzCustomTemplate]="to.select?.customTemplate"
-      [nzServerSearch]="to.select?.serverSearch"
-      [nzMaxMultipleCount]="to.select?.maxMultipleCount"
-      [nzMode]="to.select?.mode"
-      [nzLoading]="to.select?.loading"
-      [nzShowArrow]="to.select?.showArrow"
-      [nzMaxTagCount]="to.select?.maxTagCount"
-      [nzMaxTagPlaceholder]="to.select?.maxTagPlaceholder"
-      [nzOptionHeightPx]="to.select?.optionHeightPx"
-      [nzOptionOverflowSize]="to.select?.optionOverflowSize"
+      [compareWith]="props.select?.compareWith"
+      [nzAllowClear]="props.select?.allowClear"
+      [nzAutoClearSearchValue]="props.select?.autoClearSearchValue"
+      [nzBackdrop]="props.select?.backdrop"
+      [nzBorderless]="props.select?.borderless"
+      [nzOpen]="props.select?.open"
+      [nzDropdownClassName]="props.select?.dropdownMatchSelectWidth"
+      [nzDropdownStyle]="props.select?.dropdownStyle"
+      [nzCustomTemplate]="props.select?.customTemplate"
+      [nzServerSearch]="props.select?.serverSearch"
+      [nzMaxMultipleCount]="props.select?.maxMultipleCount"
+      [nzMode]="props.select?.mode"
+      [nzLoading]="props.select?.loading"
+      [nzShowArrow]="props.select?.showArrow"
+      [nzMaxTagCount]="props.select?.maxTagCount"
+      [nzMaxTagPlaceholder]="props.select?.maxTagPlaceholder"
+      [nzOptionHeightPx]="props.select?.optionHeightPx"
+      [nzOptionOverflowSize]="props.select?.optionOverflowSize"
       (ngModelChange)="
-        to.select?.ngModelChange && to.select?.ngModelChange($event)
+        props.select?.ngModelChange && props.select?.ngModelChange($event)
       "
-      (nzBlur)="to.select?.blur && to.select?.blur($event)"
-      (nzFocus)="to.select?.focus && to.select?.focus($event)"
-      (nzOpenChange)="to.select?.openChange && to.select?.openChange($event)"
+      (nzBlur)="props.select?.blur && props.select?.blur($event)"
+      (nzFocus)="props.select?.focus && props.select?.focus($event)"
+      (nzOpenChange)="props.select?.openChange && props.select?.openChange($event)"
       (nzScrollToBottom)="
-        to.select?.scrollToBottom && to.select?.scrollToBottom($event)
+        props.select?.scrollToBottom && props.select?.scrollToBottom($event)
       "
-      (nzOnSearch)="to.select?.onSearch && to.select?.onSearch($event)"
+      (nzOnSearch)="props.select?.onSearch && props.select?.onSearch($event)"
     >
       <ng-container
-        *ngFor="let item of to.options | formlySelectOptions: field | async"
+        *ngFor="let item of props.options | formlySelectOptions: field | async"
       >
         <nz-option-group *ngIf="item.group" [nzLabel]="item.label">
           <nz-option
@@ -75,8 +75,8 @@ import { Observable } from 'rxjs';
 export class FormlyFieldSelect extends FieldType implements OnInit {
   @ViewChild('select', { static: true }) select: NzSelectComponent;
   ngOnInit(): void {
-    if (this.to.select?.filterOption instanceof Function) {
-      this.select.nzFilterOption = this.to.select?.filterOption;
+    if (this.props.select?.filterOption instanceof Function) {
+      this.select.nzFilterOption = this.props.select?.filterOption;
     }
   }
 }

@@ -5,15 +5,15 @@ import { FieldType, FieldWrapper } from '@ngx-formly/core';
   selector: 'formly-field-card',
   template: `
     <nz-card
-      [nzActions]="to.card?.actions || []"
-      [nzBodyStyle]="to.card?.bodyStyle"
-      [nzBorderless]="to.card?.borderless === true"
-      [nzCover]="to.card?.cover"
-      [nzExtra]="to.card?.extra"
-      [nzHoverable]="!!to.card?.hoverable"
-      [nzTitle]="to.card?.title"
-      [nzType]="to.card?.type"
-      [nzLoading]="to.card?.loading"
+      [nzActions]="props.card?.actions || []"
+      [nzBodyStyle]="props.card?.bodyStyle"
+      [nzBorderless]="props.card?.borderless === true"
+      [nzCover]="props.card?.cover"
+      [nzExtra]="props.card?.extra"
+      [nzHoverable]="!!props.card?.hoverable"
+      [nzTitle]="props.card?.title"
+      [nzType]="props.card?.type"
+      [nzLoading]="props.card?.loading"
     >
       <ng-container #fieldComponent></ng-container>
     </nz-card>

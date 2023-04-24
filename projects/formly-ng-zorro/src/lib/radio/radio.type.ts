@@ -7,17 +7,17 @@ import { FieldType } from '@ngx-formly/core';
     <nz-radio-group
       [formControl]="formControl"
       [formlyAttributes]="field"
-      [nzName]="to.radio?.name"
-      [nzButtonStyle]="to.radio?.buttonStyle"
+      [nzName]="props.radio?.name"
+      [nzButtonStyle]="props.radio?.buttonStyle"
       (ngModelChange)="
-        to.radio?.ngModelChange && to.radio?.ngModelChange($event)
+        props.radio?.ngModelChange && props.radio?.ngModelChange($event)
       "
     >
-      <ng-container *ngIf="to.type !== 'button'; else button">
+      <ng-container *ngIf="props.type !== 'button'; else button">
         <label
           nz-radio
           [nzValue]="option.value"
-          *ngFor="let option of to.options | formlySelectOptions: field | async"
+          *ngFor="let option of props.options | formlySelectOptions: field | async"
           [nzDisabled]="option.disabled === true"
           >{{ option.label }}</label
         >
@@ -27,7 +27,7 @@ import { FieldType } from '@ngx-formly/core';
         <label
           nz-radio-button
           [nzValue]="option.value"
-          *ngFor="let option of to.options | formlySelectOptions: field | async"
+          *ngFor="let option of props.options | formlySelectOptions: field | async"
           [nzDisabled]="option.disabled === true"
           >{{ option.label }}</label
         >

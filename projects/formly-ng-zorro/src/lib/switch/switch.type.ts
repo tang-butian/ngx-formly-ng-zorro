@@ -7,12 +7,12 @@ import { FieldType } from '@ngx-formly/core';
     <nz-switch
       [formControl]="formControl"
       [formlyAttributes]="field"
-      [nzCheckedChildren]="to.switch?.checkedChildren"
-      [nzUnCheckedChildren]="to.switch?.unCheckedChildren"
-      [nzLoading]="to.switch?.loading"
-      [nzControl]="to.switch?.control"
+      [nzCheckedChildren]="props.switch?.checkedChildren"
+      [nzUnCheckedChildren]="props.switch?.unCheckedChildren"
+      [nzLoading]="props.switch?.loading"
+      [nzControl]="props.switch?.control"
       (ngModelChange)="
-        to.switch?.ngModelChange && to.switch.ngModelChange($event)
+        props.switch?.ngModelChange && props.switch.ngModelChange($event)
       "
     ></nz-switch>
   `,

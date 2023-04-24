@@ -21,19 +21,19 @@ import {
   styleUrls: ['./form-field.wrapper.less'],
   template: `
     <nz-form-item [fixed-label]="to!.spanLabelFixed!">
-      <ng-container *ngIf="to.label && to.hideLabel !== true">
+      <ng-container *ngIf="props.label && props.hideLabel !== true">
         <nz-form-label
-          [nzSpan]="to.grid?.label?.span"
-          [nzRequired]="to.required && to.hideRequiredMarker !== true"
+          [nzSpan]="props.grid?.label?.span"
+          [nzRequired]="props.required && props.hideRequiredMarker !== true"
           [nzFor]="id"
         >
           <span class="formly-label-text">
-            {{ to.label }}
+            {{ props.label }}
           </span>
         </nz-form-label>
       </ng-container>
       <nz-form-control
-        [nzSpan]="to.grid?.control?.span"
+        [nzSpan]="props.grid?.control?.span"
         [nzValidateStatus]="errorState"
         [nzErrorTip]="errorTpl"
       >
@@ -113,7 +113,7 @@ export class FormlyWrapperFormField
     if (this.to?.spanLabelFixed) {
       // prettier-ignore
       return { 'flex': '0 0 100px','flex-basis': '100'}
-      // return { 'flex': `0 0 ${this.to.spanLabelFixed}px` };
+      // return { 'flex': `0 0 ${this.props.spanLabelFixed}px` };
     }
     return null;
   }

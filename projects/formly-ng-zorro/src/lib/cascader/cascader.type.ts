@@ -6,37 +6,37 @@ import { FieldType } from '@ngx-formly/core';
   template: `
     <nz-cascader
       #cascader
-      [nzPlaceHolder]="to.placeholder"
-      [nzOptions]="to.options"
+      [nzPlaceHolder]="props.placeholder"
+      [nzOptions]="props.options"
       [formControl]="formControl"
       [formlyAttributes]="field"
-      [nzAllowClear]="to.cascader?.allowClear"
-      [nzAutoFocus]="to.cascader?.autoFocus"
-      [nzBackdrop]="to.cascader?.backdrop"
-      [nzChangeOnSelect]="to.cascader?.changeOnSelect"
-      [nzExpandTrigger]="to.cascader?.nzExpandTrigger"
-      [nzLabelProperty]="to.cascader?.labelProperty"
-      [nzLabelRender]="to.cascader?.labelRender"
-      [nzMenuClassName]="to.cascader?.menuClassName"
-      [nzMenuStyle]="to.cascader?.menuStyle"
-      [nzNotFoundContent]="to.cascader?.notFoundContent"
-      [nzOptionRender]="to.cascader?.optionRender"
-      [nzShowSearch]="to.cascader?.showSearch"
-      [nzSuffixIcon]="to.cascader?.suffixIcon"
-      [nzValueProperty]="to.cascader?.valueProperty"
-      [nzChangeOn]="to.cascader?.changeOn"
-      [nzColumnClassName]="to.cascader?.columnClassName"
-      [nzExpandIcon]="to.cascader?.expandIcon"
-      [nzLoadData]="to.cascader?.loadData"
-      (nzClear)="to.cascader?.clear && to.cascader?.clear()"
+      [nzAllowClear]="props.cascader?.allowClear"
+      [nzAutoFocus]="props.cascader?.autoFocus"
+      [nzBackdrop]="props.cascader?.backdrop"
+      [nzChangeOnSelect]="props.cascader?.changeOnSelect"
+      [nzExpandTrigger]="props.cascader?.nzExpandTrigger"
+      [nzLabelProperty]="props.cascader?.labelProperty"
+      [nzLabelRender]="props.cascader?.labelRender"
+      [nzMenuClassName]="props.cascader?.menuClassName"
+      [nzMenuStyle]="props.cascader?.menuStyle"
+      [nzNotFoundContent]="props.cascader?.notFoundContent"
+      [nzOptionRender]="props.cascader?.optionRender"
+      [nzShowSearch]="props.cascader?.showSearch"
+      [nzSuffixIcon]="props.cascader?.suffixIcon"
+      [nzValueProperty]="props.cascader?.valueProperty"
+      [nzChangeOn]="props.cascader?.changeOn"
+      [nzColumnClassName]="props.cascader?.columnClassName"
+      [nzExpandIcon]="props.cascader?.expandIcon"
+      [nzLoadData]="props.cascader?.loadData"
+      (nzClear)="props.cascader?.clear && props.cascader?.clear()"
       (ngModelChange)="
-        to.cascader?.modelChange && to.cascader.modelChange($event)
+        props.cascader?.modelChange && props.cascader.modelChange($event)
       "
       (nzVisibleChange)="
-        to.cascader?.visibleChange && to.cascader.visibleChange($event)
+        props.cascader?.visibleChange && props.cascader.visibleChange($event)
       "
       (nzSelectionChange)="
-        to.cascader?.selectionChange && to.cascader.selectionChange($event)
+        props.cascader?.selectionChange && props.cascader.selectionChange($event)
       "
     ></nz-cascader>
   `,

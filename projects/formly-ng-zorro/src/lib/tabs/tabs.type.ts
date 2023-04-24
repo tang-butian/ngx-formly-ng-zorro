@@ -5,21 +5,21 @@ import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
   selector: 'formly-field-tabs',
   template: `
     <nz-tabset
-      [nzAnimated]="to.tabs?.animated"
-      [nzSize]="to.tabs?.size"
-      [nzTabBarExtraContent]="to.tabs?.tabBarExtraContent"
-      [nzTabBarStyle]="to.tabs?.tabBarStyle"
-      [nzTabPosition]="to.tabs?.tabPosition"
-      [nzType]="to.tabs?.type"
-      [nzTabBarGutter]="to.tabs?.tabBarGutter"
-      [nzHideAll]="to.tabs?.hideAll"
-      [nzLinkRouter]="to.tabs?.linkRouter"
-      [nzLinkExact]="to.tabs?.linkExact"
-      [nzCanDeactivate]="to.tabs?.canDeactivate"
+      [nzAnimated]="props.tabs?.animated"
+      [nzSize]="props.tabs?.size"
+      [nzTabBarExtraContent]="props.tabs?.tabBarExtraContent"
+      [nzTabBarStyle]="props.tabs?.tabBarStyle"
+      [nzTabPosition]="props.tabs?.tabPosition"
+      [nzType]="props.tabs?.type"
+      [nzTabBarGutter]="props.tabs?.tabBarGutter"
+      [nzHideAll]="props.tabs?.hideAll"
+      [nzLinkRouter]="props.tabs?.linkRouter"
+      [nzLinkExact]="props.tabs?.linkExact"
+      [nzCanDeactivate]="props.tabs?.canDeactivate"
       (nzSelectedIndexChange)="
-        to.tabs?.selectedIndexChange && to.tabs?.selectedIndexChange($event)
+        props.tabs?.selectedIndexChange && props.tabs?.selectedIndexChange($event)
       "
-      (nzSelectChange)="to.tabs?.selectChange && to.tabs?.selectChange($event)"
+      (nzSelectChange)="props.tabs?.selectChange && props.tabs?.selectChange($event)"
     >
       <nz-tab
         *ngFor="let tab of field.fieldGroup; let i = index; let last = last"

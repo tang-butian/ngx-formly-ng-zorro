@@ -20,21 +20,21 @@ import { Observable } from 'rxjs';
       #slider
       [formControl]="formControl"
       [formlyAttributes]="field"
-      [nzDots]="to.slider?.dots"
-      [nzIncluded]="to.slider?.included"
-      [nzMax]="to.slider?.max"
-      [nzMin]="to.slider?.min"
-      [nzRange]="to.slider?.range"
-      [nzStep]="to.slider?.step"
-      [nzTipFormatter]="to.slider?.tipFormatter"
-      [nzVertical]="to.slider?.vertical"
-      [nzReverse]="to.slider?.reverse"
-      [nzTooltipVisible]="to.slider?.tooltipVisible"
+      [nzDots]="props.slider?.dots"
+      [nzIncluded]="props.slider?.included"
+      [nzMax]="props.slider?.max"
+      [nzMin]="props.slider?.min"
+      [nzRange]="props.slider?.range"
+      [nzStep]="props.slider?.step"
+      [nzTipFormatter]="props.slider?.tipFormatter"
+      [nzVertical]="props.slider?.vertical"
+      [nzReverse]="props.slider?.reverse"
+      [nzTooltipVisible]="props.slider?.tooltipVisible"
       (ngModelChange)="
-        to.slider?.ngModelChange && to.slider?.ngModelChange($event)
+        props.slider?.ngModelChange && props.slider?.ngModelChange($event)
       "
       (nzOnAfterChange)="
-        to.slider?.onAfterChange && to.slider?.onAfterChange($event)
+        props.slider?.onAfterChange && props.slider?.onAfterChange($event)
       "
     ></nz-slider>
   `,
@@ -44,8 +44,8 @@ export class FormlyFieldSlider extends FieldType implements AfterViewInit {
   @ViewChild('slider', { static: false }) slider: NzSliderComponent;
 
   ngAfterViewInit(): void {
-    if (this.to.slider?.marks) {
-      this.slider.nzMarks = this.to.slider?.marks;
+    if (this.props.slider?.marks) {
+      this.slider.nzMarks = this.props.slider?.marks;
     }
   }
 }

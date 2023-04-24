@@ -5,7 +5,7 @@ import { FieldType } from '@ngx-formly/core';
   selector: 'formly-field-checkbox',
   template: `
     <label
-      *ngIf="to.type !== 'group'; else group"
+      *ngIf="props.type !== 'group'; else group"
       nz-checkbox
       [formControl]="formControl"
       [formlyAttributes]="field"
@@ -13,18 +13,18 @@ import { FieldType } from '@ngx-formly/core';
         field.defaultValue === null || field.defaultValue === undefined
       "
       (ngModelChange)="
-        to.checkbox?.ngModelChange && to.checkbox?.ngModelChange($event)
+        props.checkbox?.ngModelChange && props.checkbox?.ngModelChange($event)
       "
-      >{{ to.placeholder }}</label
+      >{{ props.placeholder }}</label
     >
 
     <ng-template #group>
       <nz-checkbox-group
         [formControl]="formControl"
         [formlyAttributes]="field"
-        [ngModel]="to.options"
+        [ngModel]="props.options"
         (ngModelChange)="
-          to.checkbox?.ngModelChange && to.checkbox?.ngModelChange($event)
+          props.checkbox?.ngModelChange && props.checkbox?.ngModelChange($event)
         "
       ></nz-checkbox-group>
     </ng-template>

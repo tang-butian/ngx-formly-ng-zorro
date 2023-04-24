@@ -140,7 +140,7 @@ export class AppComponent implements OnInit {
           },
 
           number: {
-            step: 2,
+           
             precision: 1,
             width: '100%',
             formatter: (value: number) => {
@@ -665,6 +665,21 @@ export class AppComponent implements OnInit {
           },
           {
             templateOptions: { label: 'Day of the trip' },
+            fieldGroup: [
+              {
+                key: 'day',
+                type: 'date',
+                className: 'ant-col  ant-col-24',
+                templateOptions: {
+                  type: 'date',
+                  label: 'Day of the trip',
+                  required: true,
+                },
+              },
+            ],
+          },
+          {
+            templateOptions: { label: 'Day' },
             fieldGroup: [
               {
                 key: 'day',

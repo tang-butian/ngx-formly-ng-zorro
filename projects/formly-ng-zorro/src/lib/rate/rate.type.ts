@@ -7,18 +7,18 @@ import { FieldType } from '@ngx-formly/core';
     <nz-rate
       [formControl]="formControl"
       [formlyAttributes]="field"
-      [nzAllowClear]="to.rate?.allowClear"
-      [nzAllowHalf]="to.rate?.allowHalf"
-      [nzCharacter]="to.rate?.character"
-      [nzCount]="to.rate?.count"
-      [nzTooltips]="to.rate?.tooltips"
-      (ngModelChange)="to.rate?.ngModelChange && to.rate?.ngModelChange($event)"
-      (nzOnBlur)="to.rate?.onBlur && to.rate?.onBlur($event)"
-      (nzOnFocus)="to.rate?.onFocus && to.rate?.onFocus($event)"
+      [nzAllowClear]="props.rate?.allowClear"
+      [nzAllowHalf]="props.rate?.allowHalf"
+      [nzCharacter]="props.rate?.character"
+      [nzCount]="props.rate?.count"
+      [nzTooltips]="props.rate?.tooltips"
+      (ngModelChange)="props.rate?.ngModelChange && props.rate?.ngModelChange($event)"
+      (nzOnBlur)="props.rate?.onBlur && props.rate?.onBlur($event)"
+      (nzOnFocus)="props.rate?.onFocus && props.rate?.onFocus($event)"
       (nzOnHoverChange)="
-        to.rate?.onHoverChange && to.rate?.onHoverChange($event)
+        props.rate?.onHoverChange && props.rate?.onHoverChange($event)
       "
-      (nzOnKeyDown)="to.rate?.onKyeDown && to.rate?.onKyeDown($event)"
+      (nzOnKeyDown)="props.rate?.onKyeDown && props.rate?.onKyeDown($event)"
     ></nz-rate>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
