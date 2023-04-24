@@ -157,6 +157,11 @@ export class FormlyFieldInput extends FieldType implements OnInit {
       // 设置初始化
       this.props.number.parser = this.props.number.parser || ((value: string) => value.trim().replace(/。/g, '.').replace(/[^\w\.-]+/g, ''));
       this.props.number.formatter = this.props.number.formatter || ((value: number | string) => value);
+      this.props.number.step = this.props.number.step || 1;
+      this.props.number.precisionMode = this.props.number.precisionMode || 'toFixed';
+      this.props.number.inputMode = this.props.number.inputMode || 'decimal';
+      this.props.number.max = this.props.number.max || Infinity;
+      this.props.number.min = this.props.number.min || -Infinity;
     }
   }
 
