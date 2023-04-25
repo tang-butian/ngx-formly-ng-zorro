@@ -18,7 +18,7 @@ import * as Checkbox from './lib/checkbox/index';
 import * as Cascader from './lib/cascader/index';
 import * as Card from './lib/card/index';
 import * as Tabs from './lib/tabs/index';
-
+import * as Stepper from './lib/stepper/index';
 export {
   Upload,
   TreeSelect,
@@ -35,4 +35,5 @@ export {
   Cascader,
   Card,
   Tabs,
+  Stepper
 };

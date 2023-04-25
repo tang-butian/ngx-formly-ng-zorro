@@ -20,12 +20,14 @@ import { RadioFormly } from 'projects/formly-ng-zorro/src/lib/radio';
 import { RateFormly } from 'projects/formly-ng-zorro/src/lib/rate';
 import { SelectFormly } from 'projects/formly-ng-zorro/src/lib/select';
 import { SliderFormly } from 'projects/formly-ng-zorro/src/lib/slider';
+import { StepFormly, StepsFormly } from 'projects/formly-ng-zorro/src/lib/stepper';
 import { SwitchFormly } from 'projects/formly-ng-zorro/src/lib/switch';
 import { TabFormly, TabsFormly } from 'projects/formly-ng-zorro/src/lib/tabs';
 import { TimeFormly } from 'projects/formly-ng-zorro/src/lib/time';
 import { TransferFormly } from 'projects/formly-ng-zorro/src/lib/transfer';
 import { TreeSelectFormly } from 'projects/formly-ng-zorro/src/lib/tree-select';
 import { UploadFormly } from 'projects/formly-ng-zorro/src/lib/upload';
+import { Stepper } from 'projects/formly-ng-zorro/src/public-api';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
@@ -40,7 +42,7 @@ export class AppComponent implements OnInit {
   options: FormlyFormOptions = {};
   @ViewChild('characterZhLetter', { static: true })
   characterZhLetter: TemplateRef<any>;
-  fields: FormlyFieldConfig[];
+  fields: FormlyFieldConfig[]; 
   list: TransferItem[] = [];
   ngOnInit(): void {
     for (let i = 0; i < 20; i++) {
@@ -56,7 +58,7 @@ export class AppComponent implements OnInit {
         key: 'input',
         type: 'input',
         className: 'ant-col  ant-col-24',
-        templateOptions: {
+        props: {
           label: 'input',
           placeholder: 'input',
           required: true,
@@ -140,7 +142,6 @@ export class AppComponent implements OnInit {
           },
 
           number: {
-           
             precision: 1,
             width: '100%',
             formatter: (value: number) => {
@@ -479,7 +480,7 @@ export class AppComponent implements OnInit {
         key: 'range-date',
         type: 'date',
         className: 'ant-col  ant-col-24',
-        templateOptions: {
+        props: {
           //  required: true,
           type: 'range',
           placeholder: ['123', 'sdf'] as any,
@@ -494,6 +495,7 @@ export class AppComponent implements OnInit {
             onOk: (value: Date) => {
               console.log(value);
             },
+            status: 'error'
           } as RangeDateFormly,
         },
       },
@@ -626,7 +628,7 @@ export class AppComponent implements OnInit {
               label: 'Personal data',
 
               tab: {
-                disabled: true,
+                disabled: false,
               } as TabFormly,
             },
             fieldGroup: [
@@ -726,6 +728,87 @@ export class AppComponent implements OnInit {
           },
         ],
       },
+
+
+      {
+        type: 'stepper',
+        props: {
+          stepper: {
+            onIndexChange: (index) => { 
+              console.log(index);
+            }
+          } as StepsFormly
+        },
+        fieldGroup: [
+          {
+            props: {
+              label: 'Personal data',
+              stepFly: {
+                title: 'Personal data',
+              //  status: 'wait'
+              } as StepFormly
+            },
+            fieldGroup: [
+              {
+                key: 'firstname',
+                type: 'input',
+                props: {
+                  label: 'First name',
+                  required: true,
+                },
+              },
+              {
+                key: 'age',
+                type: 'input',
+                props: {
+                  type: 'number',
+                  label: 'Age',
+                  required: true,
+                },
+              },
+            ],
+          },
+          {
+            props: {
+              label: 'Destination',
+              stepFly: {
+                title: 'Destination'
+              } as StepFormly },
+            fieldGroup: [
+              {
+                key: 'country',
+                type: 'input',
+                props: {
+                  label: 'Country',
+                  required: true,
+                },
+              },
+            ],
+          },
+          {
+            props: {
+              label: 'Day of the trip',
+              stepFly: {
+                title: 'Day of the trip'
+              } as StepFormly
+            },
+            fieldGroup: [
+              {
+                key: 'day',
+                type: 'date',
+                className: 'ant-col  ant-col-24',
+                templateOptions: {
+                  type: 'date',
+                  label: 'Day of the trip',
+                  required: true,
+                },
+              },
+            ],
+          },
+        ],
+      },
+
+
     ];
   }
 

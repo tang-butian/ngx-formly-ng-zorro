@@ -18,6 +18,7 @@ import { FormlyNzTimeModule } from './time/time.module';
 import { FormlyNzTransferModule } from './transfer/transfer.module';
 import { FormlyNzTreeSelectModule } from './tree-select/tree-select.module';
 import { FormlyNzUploadModule } from './upload/upload.module';
+import { FormlyNzStepperModule } from './stepper/stepper.module';
 
 @NgModule({
   declarations: [],
@@ -40,6 +41,7 @@ import { FormlyNzUploadModule } from './upload/upload.module';
     NzFormModule,
     FormlyNzTabsModule,
     FormlyNzInputGroupModule,
+    FormlyNzStepperModule
   ],
   exports: [],
 })
