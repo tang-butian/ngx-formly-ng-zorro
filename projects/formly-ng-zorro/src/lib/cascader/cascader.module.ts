@@ -22,7 +22,7 @@ import { CascaderFormly } from '.';
           wrappers: ['form-field'],
           defaultOptions: {
             className: 'ant-col  ant-col-12',
-            templateOptions: {
+            props: {
               placeholder: '请选择',
               cascader: {
                 allowClear: true,

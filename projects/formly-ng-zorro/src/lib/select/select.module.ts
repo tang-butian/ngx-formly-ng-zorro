@@ -24,7 +24,7 @@ import { FormlySelectModule } from '@ngx-formly/core/select';
           wrappers: ['form-field'],
           defaultOptions: {
             className: 'ant-col  ant-col-12',
-            templateOptions: {
+            props: {
               select: {
                 compareWith: (o1: any, o2: any) => o1 === o2,
                 autoClearSearchValue: true,

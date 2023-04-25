@@ -82,6 +82,5 @@ import { FieldType } from '@ngx-formly/core';
 })
 export class FormlyFieldDate extends FieldType implements OnInit {
   ngOnInit(): void {
-    console.log(this.props);
   }
 }

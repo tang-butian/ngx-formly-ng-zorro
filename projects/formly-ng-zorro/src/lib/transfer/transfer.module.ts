@@ -26,7 +26,7 @@ import { TransferComponent } from './transfer.component';
           wrappers: ['form-field'],
           defaultOptions: {
             className: 'ant-col  ant-col-12',
-            templateOptions: {
+            props: {
               transfer: {
                 dataSource: [],
                 titles: ['', ''],

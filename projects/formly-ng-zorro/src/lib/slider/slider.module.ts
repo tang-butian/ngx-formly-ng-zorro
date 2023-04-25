@@ -23,7 +23,7 @@ import { SliderFormly } from '.';
           wrappers: ['form-field'],
           defaultOptions: {
             className: 'ant-col  ant-col-12',
-            templateOptions: {
+            props: {
               slider: {
                 dots: false,
                 included: false,

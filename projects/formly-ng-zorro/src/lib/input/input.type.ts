@@ -5,7 +5,7 @@ import {
   ViewChild,
   OnInit,
 } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 import { NzAutocompleteComponent } from 'ng-zorro-antd/auto-complete';
 import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
 
@@ -148,20 +148,37 @@ import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldInput extends FieldType implements OnInit {
+export class FormlyFieldInput extends FieldType<FieldTypeConfig> implements OnInit {
 
 
 
   ngOnInit(): void {
-    if (this.props.type === 'number') {
-      // 设置初始化
-      this.props.number.parser = this.props.number.parser || ((value: string) => value.trim().replace(/。/g, '.').replace(/[^\w\.-]+/g, ''));
-      this.props.number.formatter = this.props.number.formatter || ((value: number | string) => value);
-      this.props.number.step = this.props.number.step || 1;
-      this.props.number.precisionMode = this.props.number.precisionMode || 'toFixed';
-      this.props.number.inputMode = this.props.number.inputMode || 'decimal';
-      this.props.number.max = this.props.number.max || Infinity;
-      this.props.number.min = this.props.number.min || -Infinity;
+    // 设置初始化
+    switch (this.props.type) {
+      case 'number':
+        this.props.number = {
+          max: Infinity,
+          min: -Infinity,
+          parser: (value: string) =>
+            value
+              .trim()
+              .replace(/。/g, '.')
+              .replace(/[^\w\.-]+/g, ''),
+          precisionMode: 'toFixed',
+          step: 1,
+          inputMode: 'decimal',
+          formatter: (value: number) => value,
+          ...this.props.number
+        };
+        return;
+      case 'autoComplete':
+        this.props.autoComplete = {
+          backfill: false,
+          defaultActiveFirstOption: true,
+          compareWith: (o1: any, o2: any) => o1 === o2,
+          ...this.props.autoComplete
+        };
+        return;
     }
   }
 
@@ -173,5 +190,4 @@ export class FormlyFieldInput extends FieldType implements OnInit {
     }
     return '';
   }
-  
 }

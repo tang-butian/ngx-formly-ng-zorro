@@ -25,7 +25,7 @@ import { NzTreeNode } from 'ng-zorro-antd/tree';
           wrappers: ['form-field'],
           defaultOptions: {
             className: 'ant-col  ant-col-12',
-            templateOptions: {
+            props: {
               treeSelect: {
                 dropdownMatchSelectWidth: true,
                 showExpand: true,

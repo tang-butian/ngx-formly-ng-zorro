@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
@@ -42,4 +42,19 @@ import { FieldType } from '@ngx-formly/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldCascader extends FieldType {}
+export class FormlyFieldCascader extends FieldType implements OnInit {
+  ngOnInit(): void {
+    this.props.cascader = {
+      allowClear: true,
+      backdrop: false,
+      changeOnSelect: false,
+      expandTrigger: 'click',
+      labelProperty: 'label',
+      showArrow: true,
+      showInput: true,
+      showSearch: false,
+      valueProperty: 'value',
+      ...this.props.cascader
+    };
+  }
+}

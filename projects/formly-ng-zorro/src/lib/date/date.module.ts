@@ -22,7 +22,7 @@ import { DateFormly, RangeDateFormly } from '.';
           wrappers: ['form-field'],
           defaultOptions: {
             className: 'ant-col  ant-col-12',
-            templateOptions: {
+            props: {
               type: 'date',
               date: {
                 allowClear: true,
@@ -43,7 +43,7 @@ import { DateFormly, RangeDateFormly } from '.';
           extends: 'date',
           defaultOptions: {
             className: 'ant-col  ant-col-12',
-            templateOptions: {
+            props: {
               type: 'range',
               range: {
                 allowClear: true,

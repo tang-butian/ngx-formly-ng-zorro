@@ -21,7 +21,7 @@ import { SwitchFormly } from '.';
           wrappers: ['form-field'],
           defaultOptions: {
             className: 'ant-col  ant-col-12',
-            templateOptions: {
+            props: {
               switch: {} as SwitchFormly,
             },
           },

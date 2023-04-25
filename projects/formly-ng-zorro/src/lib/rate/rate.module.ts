@@ -22,7 +22,7 @@ import { RateFormly } from '.';
           wrappers: ['form-field'],
           defaultOptions: {
             className: 'ant-col  ant-col-12',
-            templateOptions: {
+            props: {
               rate: {
                 allowClear: true,
                 allowHalf: false,

@@ -21,7 +21,7 @@ import { TabsFormly } from '.';
           component: FormlyFieldTabs,
           defaultOptions: {
             className: 'ant-col  ant-col-12',
-            templateOptions: {
+            props: {
               tabs: {
                 animated: true,
                 size: 'default',

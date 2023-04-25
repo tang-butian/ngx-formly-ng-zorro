@@ -34,7 +34,7 @@ import {
           wrappers: ['form-field'],
           defaultOptions: {
             className: 'ant-col  ant-col-12',
-            templateOptions: {
+            props: {
               type: 'input',
               input: {} as InputFormly,
             },
@@ -47,7 +47,7 @@ import {
           extends: 'input',
           defaultOptions: {
             className: 'ant-col  ant-col-12',
-            templateOptions: {
+            props: {
               type: 'autoComplete',
               autoComplete: {
                 backfill: false,
@@ -61,7 +61,7 @@ import {
           name: 'number',
           extends: 'input',
           defaultOptions: {
-            templateOptions: {
+            props: {
               className: 'ant-col  ant-col-12',
               type: 'number',
               number: {
@@ -85,7 +85,7 @@ import {
           extends: 'input',
           defaultOptions: {
             className: 'ant-col  ant-col-12',
-            templateOptions: {
+            props: {
               type: 'number',
             },
           },
@@ -95,7 +95,7 @@ import {
           extends: 'input',
           defaultOptions: {
             className: 'ant-col  ant-col-12',
-            templateOptions: {
+            props: {
               type: 'inputGroup',
             },
           },
@@ -105,7 +105,7 @@ import {
           extends: 'input',
           defaultOptions: {
             className: 'ant-col  ant-col-12',
-            templateOptions: {
+            props: {
               type: 'textarea',
               textarea: {
                 rows: 4,
